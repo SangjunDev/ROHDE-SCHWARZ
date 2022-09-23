@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+    {%load static%}
+    <head>
+        <title>Shopio | Bootstrap 5 E-commerce Template by Bootstrapious.com</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="all,follow">
+        <!-- Google fonts-->
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&amp;display=swap">
+        <!-- Swiper slider-->
+        <link
+            rel="stylesheet"
+            href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+        <!-- Lightbox-->
+        <link rel="stylesheet" href="{% static 'vendor/glightbox/css/glightbox.css' %}">
+        <!-- Choices.js-->
+        <link
+            rel="stylesheet"
+            href="{% static 'vendor/choices.js/public/assets/styles/choices.css' %}">
+        <!-- Nouislider-->
+        <link
+            rel="stylesheet"
+            href="{% static 'vendor/nouislider/nouislider.min.css' %}">
+        <!-- theme stylesheet-->
+        <link
+            rel="stylesheet"
+            href="{% static 'css/style.default.71609fc8.css' %}"
+            id="theme-stylesheet"><link id="new-stylesheet" rel="stylesheet">
+        <!-- Custom stylesheet - for your changes-->
+        <link rel="stylesheet" href="{% static 'css/custom.0a822280.css' %}">
+        <!-- Favicon-->
+        <link rel="shortcut icon" href="{% static 'img/favicon.9f24e811.png' %}">
+        <!-- Tweaks for older IEs-->
+        <!--[if lt IE 9]> <script
+        src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script> <script
+        src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    </head>
+    <body>
+        {% include 'shop/symbol.html' %}
+        {% include 'blog/navbar.html' %}
+        {% include 'shop/index_modal.html' %}
+
+        <!-- Hero section-->
+        <section
+            class="sub-hero bg-center bg-cover d-flex align-items-center"
+            style="background: url(img/bg-banner.f561f8e8.jpg)">
+            <div class="container">
+                <h1 class="mb-1 hero-heading">Shop</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 px-0">
+                        <li class="breadcrumb-item">
+                            <a class="reset-anchor" href="/">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+        <section class="py-5">
+            <div class="container py-5">
+                <div class="row">
+                    <!-- Shop sidebar-->
+                    <div class="col-xl-2 col-lg-3 order-2 order-lg-1">
+                        <h5 class="mb-4">Shop by Category</h5>
+                        <ul class="list-unstyled text-muted mb-5">
+                            <li class="mb-2 d-flex align-items-center justify-content-between">
+                                <a class="reset-anchor" href="#">오실로스코프</a>
+                                <span class="badge bg-light text-dark"></span></li>
+                            <li class="mb-2 d-flex align-items-center justify-content-between">
+                                <a class="reset-anchor" href="#">미터 &amp; 카운터</a>
+                                <span class="badge bg-light text-dark"></span></li>
+                            <li class="mb-2 d-flex align-items-center justify-content-between">
+                                <a class="reset-anchor" href="#">직류 전원 공급장치</a>
+                                <span class="badge bg-light text-dark"></span></li>
+                            <li class="mb-2 d-flex align-items-center justify-content-between">
+                                <a class="reset-anchor" href="#">신호 &amp; 스펙트럼 분석기</a>
+                                <span class="badge bg-light text-dark"></span></li>
+                            <li class="mb-2 d-flex align-items-center justify-content-between">
+                                <a class="reset-anchor" href="#">신호발생기</a>
+                                <span class="badge bg-light text-dark"></span></li>
+                            <li class="mb-2 d-flex align-items-center justify-content-between">
+                                <a class="reset-anchor" href="#">네트워크 분석기</a>
+                                <span class="badge bg-light text-dark"></span></li>
+                            <li class="mb-2 d-flex align-items-center justify-content-between">
+                                <a class="reset-anchor" href="#">오디오 분석기</a>
+                                <span class="badge bg-light text-dark"></span></li>
+                            <li class="mb-2 d-flex align-items-center justify-content-between">
+                                <a class="reset-anchor" href="#">EMC</a>
+                                <span class="badge bg-light text-dark"></span></li>
+                            <li class="mb-2 d-flex align-items-center justify-content-between">
+                                <a class="reset-anchor" href="#">파워센서</a>
+                                <span class="badge bg-light text-dark"></span></li>
+                        </ul>
+                    </div>
+                    <!-- Shop listing-->
+                    <div class="col-xl-10 col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
+                        <!-- Listing filter-->
+                        <div class="row mb-4 pb-3 align-items-center">
+                            <div class="col-md-6 text-center text-md-start">
+                                <p class="small text-muted">Showing
+                                    <strong class="text-dark">12
+                                    </strong>of
+                                    <strong class="text-dark">265
+                                    </strong>items</p>
+                            </div>
+                            <div class="col-md-6 text-lg-end">
+                                <div
+                                    class="d-flex align-items-center justify-content-center justify-content-md-end">
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-outline-dark px-2 btn-sm border-light" href="#">
+                                                <i class="fas fa-th-list"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-outline-dark px-2 btn-sm border-light" href="#">
+                                                <i class="fas fa-th"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-outline-dark px-2 btn-sm border-light" href="#">
+                                                <i class="fas fa-th-large"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="list-inline mb-0 ms-2">
+                                        <li class="list-inline-item text-start">
+                                            <div
+                                                class="choices"
+                                                data-type="select-one"
+                                                tabindex="0"
+                                                role="combobox"
+                                                aria-autocomplete="list"
+                                                aria-haspopup="true"
+                                                aria-expanded="false">
+                                                <div class="choices__inner">
+                                                    <select
+                                                        class="form-control js-sort choices__input"
+                                                        name="sort"
+                                                        hidden=""
+                                                        tabindex="-1"
+                                                        data-choice="active">
+                                                        <option value="">Sort by</option>
+                                                    </select>
+                                                    <div class="choices__list choices__list--single">
+                                                        <div
+                                                            class="choices__item choices__placeholder choices__item--selectable"
+                                                            data-item=""
+                                                            data-id="1"
+                                                            data-value=""
+                                                            data-custom-properties="null"
+                                                            aria-selected="true">Sort by</div>
+                                                    </div>
+                                                </div>
+                                                <div class="choices__list choices__list--dropdown" aria-expanded="false"><input
+                                                    type="text"
+                                                    class="choices__input choices__input--cloned"
+                                                    autocomplete="off"
+                                                    autocapitalize="off"
+                                                    spellcheck="false"
+                                                    role="textbox"
+                                                    aria-autocomplete="list"
+                                                    aria-label="Sort by"
+                                                    placeholder="">
+                                                    <div class="choices__list" role="listbox">
+                                                        <div
+                                                            id="choices--sort-8t-item-choice-5"
+                                                            class="choices__item choices__item--choice is-selected choices__placeholder choices__item--selectable is-highlighted"
+                                                            role="option"
+                                                            data-choice=""
+                                                            data-id="5"
+                                                            data-value=""
+                                                            data-select-text=""
+                                                            data-choice-selectable=""
+                                                            aria-selected="true">Sort by</div>
+                                                        <div
+                                                            id="choices--sort-8t-item-choice-1"
+                                                            class="choices__item choices__item--choice choices__item--selectable"
+                                                            role="option"
+                                                            data-choice=""
+                                                            data-id="1"
+                                                            data-value="Option 1"
+                                                            data-select-text=""
+                                                            data-choice-selectable="">Best match</div>
+                                                        <div
+                                                            id="choices--sort-8t-item-choice-2"
+                                                            class="choices__item choices__item--choice choices__item--selectable"
+                                                            role="option"
+                                                            data-choice=""
+                                                            data-id="2"
+                                                            data-value="Option 1"
+                                                            data-select-text=""
+                                                            data-choice-selectable="">Popularity</div>
+                                                        <div
+                                                            id="choices--sort-8t-item-choice-3"
+                                                            class="choices__item choices__item--choice choices__item--selectable"
+                                                            role="option"
+                                                            data-choice=""
+                                                            data-id="3"
+                                                            data-value="Option 1"
+                                                            data-select-text=""
+                                                            data-choice-selectable="">Price: high to low</div>
+                                                        <div
+                                                            id="choices--sort-8t-item-choice-4"
+                                                            class="choices__item choices__item--choice choices__item--selectable"
+                                                            role="option"
+                                                            data-choice=""
+                                                            data-id="4"
+                                                            data-value="Option 1"
+                                                            data-select-text=""
+                                                            data-choice-selectable="">Price: low to high</div>
+                                                        <div
+                                                            id="choices--sort-8t-item-choice-6"
+                                                            class="choices__item choices__item--choice choices__item--selectable"
+                                                            role="option"
+                                                            data-choice=""
+                                                            data-id="6"
+                                                            data-value="Option 1"
+                                                            data-select-text=""
+                                                            data-choice-selectable="">Top rated</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-primary"></span>
+                                    <a href="detail.html"><img
+                                        class="img-fluid"
+                                        src="{%static 'img\products\index\osi.jpg'%}"
+                                        alt="Round grey hanging decor"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">Round grey hanging decor</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-"></span>
+                                    <a href="detail.html"><img
+                                        class="img-fluid"
+                                        src="{%static 'img\products\index\btm.jpg'%}"
+                                        alt="silver black round Ipod"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">silver black round Ipod</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-info"></span>
+                                    <a href="detail.html"><img class="img-fluid" src="{%static 'img\products\index\mnc.jpg'%}" alt="White USB cable"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">White USB cable</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-"></span>
+                                    <a href="detail.html"><img
+                                        class="img-fluid"
+                                        src="{%static 'img\products\index\ntw.jpg'%}"
+                                        alt="Sony PS 4 game controller"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">Sony PS 4 game controller</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-"></span>
+                                    <a href="detail.html"><img
+                                        class="img-fluid"
+                                        src="img/product-5.5d8c02c5.jpg"
+                                        alt="Kui Ye Chen’s AirPods"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">Kui Ye Chen’s AirPods</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-warning">Hot</span>
+                                    <a href="detail.html"><img class="img-fluid" src="img/product-6.82c4cac8.jpg" alt="Black camera lens"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">Black camera lens</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-"></span>
+                                    <a href="detail.html"><img
+                                        class="img-fluid"
+                                        src="img/product-7.be376c2d.jpg"
+                                        alt="Apple wireless keyboard"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">Apple wireless keyboard</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-danger">Soldout</span>
+                                    <a href="detail.html"><img
+                                        class="img-fluid"
+                                        src="img/product-8.88684cc3.jpg"
+                                        alt="Black Canon EOS camera"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">Black Canon EOS camera</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-primary">New Arrival</span>
+                                    <a href="detail.html"><img
+                                        class="img-fluid"
+                                        src="img/product-9.7bc0d11d.jpg"
+                                        alt="Silver round analog watch"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">Silver round analog watch</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-"></span>
+                                    <a href="detail.html"><img class="img-fluid" src="img/product-10.d7432880.jpg" alt="Apple Watch"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">Apple Watch</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-info">Trending</span>
+                                    <a href="detail.html"><img
+                                        class="img-fluid"
+                                        src="img/product-11.1f4b5e9b.jpg"
+                                        alt="Joemalone Women prefume"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">Joemalone Women prefume</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-"></span>
+                                    <a href="detail.html"><img class="img-fluid" src="img/product-12.c4210d28.jpg" alt="Nike air max 95"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">Nike air max 95</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-danger">Soldout</span>
+                                    <a href="detail.html"><img
+                                        class="img-fluid"
+                                        src="img/product-13.aff049a7.jpg"
+                                        alt="Red digital smartwatch"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">Red digital smartwatch</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-"></span>
+                                    <a href="detail.html"><img
+                                        class="img-fluid"
+                                        src="img/product-14.1adefbd6.jpg"
+                                        alt="Air Jordan 12 gym red"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">Air Jordan 12 gym red</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-warning">Hot</span>
+                                    <a href="detail.html"><img
+                                        class="img-fluid"
+                                        src="img/product-15.37a0a89c.jpg"
+                                        alt="Kui Ye Chen’s AirPods"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">Kui Ye Chen’s AirPods</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Product-->
+                            <div class="col-xl-3 col-lg-4 col-6">
+                                <div class="product mb-4">
+                                    <span class="badge rounded-0 bg-"></span>
+                                    <a href="detail.html"><img class="img-fluid" src="img/product-10.d7432880.jpg" alt="Apple watch"></a>
+                                    <div class="cta shadow d-inline-block">
+                                        <a class="product-btn" href="#">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a class="product-btn" href="#productView" data-bs-toggle="modal">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <a class="product-btn" href="cart.html">
+                                            <i class="fas fa-dolly-flatbed"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6 class="text-center">
+                                    <a class="reset-anchor" href="detail.html">Apple watch</a>
+                                </h6>
+                                <p class="text-center text-muted font-weight-bold mb-4">$22.00</p>
+                            </div>
+                            <!-- Pagination-->
+                            <nav class="pt-5" aria-label="Page navigation">
+                                <ul class="pagination justify-content-center justify-content-lg-end mb-0">
+                                    <li class="page-item mx-1">
+                                        <a class="page-link py-1" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">«</span></a>
+                                    </li>
+                                    <li class="page-item mx-1 active">
+                                        <a class="page-link py-1" href="#">1</a>
+                                    </li>
+                                    <li class="page-item mx-1">
+                                        <a class="page-link py-1" href="#">2</a>
+                                    </li>
+                                    <li class="page-item mx-1">
+                                        <a class="page-link py-1" href="#">3</a>
+                                    </li>
+                                    <li class="page-item mx-1">
+                                        <a class="page-link py-1" href="#" aria-label="Next">
+                                            <span aria-hidden="true">»</span></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% include 'blog/footer.html' %}
+
+        <!-- JavaScript files-->
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+        <script src="{% static 'vendor/swiper/swiper-bundle.min.js'%}"></script>
+        <script src="{% static 'vendor/glightbox/js/glightbox.js'%}"></script>
+        <script src="{% static 'vendor/choices.js/public/assets/scripts/choices.js'%}"></script>
+        <script src="{% static 'vendor/nouislider/nouislider.min.js'%}"></script>
+        <script src="{% static 'js/theme.b8c44118.js'%}"></script>
+        <script src="{% static 'js/js-cookie.55cdbe0d.js'%}"></script>
+        <script src="{% static 'js/demo.7c677988.js'%}"></script>
+        <script>
+            /* ==============================================
+        CUSTOM SELECT
+      ============================================== */
+            const sorting = document.querySelector('.js-sort');
+            const sortingchoices = new Choices(sorting, {
+                placeholder: false,
+                itemSelectText: ''
+            });
+
+            var slider = document.getElementById('priceRange');
+            noUiSlider.create(slider, {
+                start: [
+                    0, 30
+                ],
+                connect: true,
+                tooltips: [
+                    true, true
+                ],
+                range: {
+                    'min': 0,
+                    'max': 100
+                }
+            });
+        </script>
+        <script>
+            // -------------------------------------------------------
+            // Inject SVG Sprite -   see more here
+            // https://css-tricks.com/ajaxing-svg-sprite/
+            // ------------------------------------------------------
+            function injectSvgSprite(path) {
+
+                var ajax = new XMLHttpRequest();
+                ajax.open("GET", path, true);
+                ajax.send();
+                ajax.onload = function (e) {
+                    var div = document.createElement("div");
+                    div.className = 'd-none';
+                    div.innerHTML = ajax.responseText;
+                    document
+                        .body
+                        .insertBefore(div, document.body.childNodes[0]);
+                }
+            }
+            // this is set to BootstrapTemple website as you cannot inject local SVG sprite
+            // (using only 'icons/orion-svg-sprite.c2a8f15b.svg' path) while using file://
+            // protocol pls don't forget to change to your domain :)
+            injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg');
+        </script>
+        <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+            crossorigin="anonymous">
+
+    </body>
+</html>
