@@ -4,7 +4,7 @@ from .models import producet
 
 def shop(request):
   
-  products = producet.object
+  products = producet.objects.all().order_by('pk')
   return render(
     request,
     'shop/shop_index.html',
