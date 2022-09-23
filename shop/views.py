@@ -8,6 +8,10 @@ def shop(request):
   return render(
     request,
     'shop/shop_index.html',
+    {
+      'products' : products
+      
+    }
   )
   
 def shop_detail(request):
