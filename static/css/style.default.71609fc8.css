@@ -3319,6 +3319,7 @@ fieldset:disabled .btn {
 .fade {
     transition: opacity 0.15s linear;
 }
+
 @media (prefers-reduced-motion: reduce) {
     .fade {
         transition: none;
@@ -11110,3 +11111,4 @@ a.text-hover-dark:hover {
     opacity: 1;
     font-size: 0.9rem;
 }
+

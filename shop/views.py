@@ -1,13 +1,13 @@
 from django.shortcuts import render
 
-from .models import producet
+from .models import oscillo
 
-def shop(request):
+def shop_Osciiloscope(request):
   
-  products = producet.objects.all().order_by('pk')
+  products = oscillo.objects.all().order_by('pk')
   return render(
     request,
-    'shop/shop_index.html',
+    'shop/shop_Osciiloscope.html',
     {
       'products' : products
       

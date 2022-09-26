@@ -54,7 +54,7 @@
                         <li class="breadcrumb-item">
                             <a class="reset-anchor" href="index.html">Home</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                        <li class="breadcrumb-item active" aria-current="page">Shop/Oscilloscope</li>
                     </ol>
                 </nav>
             </div>
@@ -68,7 +68,7 @@
                         <h5 class="mb-4">Shop by Category</h5>
                         <ul class="list-unstyled text-muted mb-5">
                             <li class="mb-2 d-flex align-items-center justify-content-between">
-                                <a class="reset-anchor" href="#">오실로스코프</a>
+                                <a class="reset-anchor" href="/shop/osciiloscope">오실로스코프</a>
                                 <span class="badge bg-light text-dark"></span></li>
                             <li class="mb-2 d-flex align-items-center justify-content-between">
                                 <a class="reset-anchor" href="#">미터 &amp; 카운터</a>
@@ -111,23 +111,24 @@
                         <div class="row">
                             {% for product in products %}
                             <!-- Product-->
-                            <div class="col-xl-3 col-lg-4 col-6">
+                            <div class="col-xl-4 col-lg-4 col-6">
                                 <div class="product mb-4">
-                                    <a href="detail.html">
+                                    <a href="/shop/detail">
                                         <img
                                             class="img-fluid"
                                             src="{{product.image.url}}"
-                                            alt="silver black round Ipod"></a>
-                                        <div class="cta shadow d-inline-block">
-                                        </div>
-                                    </div>
+                                            alt="silver black round Ipod">
+                                        </a>
+                                        <div class="cta shadow d-inline-block"></div>
+                                    
                                     <h6 class="text-center">
-                                        <a class="reset-anchor" href="detail.html">{{product.name}}</a>
+                                        <a class="reset-anchor" href="/shop/detail">{{product.name}}</a>
                                     </h6>
                                     <p class="text-center text-muted font-weight-bold mb-4">{{product.about}}</p>
                                 </div>
 
                             {% endfor %}
+                            </div>
 
                             <!-- Pagination-->
                             <nav class="pt-5" aria-label="Page navigation">
@@ -217,11 +218,7 @@
             injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg');
         </script>
         <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
-        <link
-            rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-            crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/a85203b725.js" crossorigin="anonymous"></script>    
 
     </body>
 </html>
