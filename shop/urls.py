@@ -3,8 +3,10 @@ from . import views
 
 
 urlpatterns = [
-    path('osciiloscope',views.shop_Osciiloscope),
-    path('detail',views.shop_detail),
+    path('<str:name>/<int:pk>/', views.ShopDetail.as_view()),
+    path('',views.ShopList.as_view()),
+    #path('',views.shop_index),
+    #path('detail',views.shop_detail),
     
 ]
 

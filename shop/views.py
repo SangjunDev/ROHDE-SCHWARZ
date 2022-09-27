@@ -1,22 +1,30 @@
-from django.shortcuts import render
+from django.views.generic import ListView, DetailView
+from .models import *
 
-from .models import oscillo
-
-def shop_Osciiloscope(request):
+class ShopList(ListView):
+  model = Product
+  ordering = '-pk'
   
-  products = oscillo.objects.all().order_by('pk')
-  return render(
-    request,
-    'shop/shop_Osciiloscope.html',
-    {
-      'products' : products
+class ShopDetail(DetailView):
+  model = Product  
+
+
+
+#def shop_index(request):
+  
+#  products = Product.objects.all().order_by('pk')
+#  return render(
+#    request,
+#    'shop/shop_index.html',
+#    {
+#      'products' : products
       
-    }
-  )
+#    }
+#  )
   
-def shop_detail(request):
-  return render(
-    request,
-    'shop/detail.html',
-  )  
+#def shop_detail(request):
+#  return render(
+#    request,
+#    'shop/detail.html',
+#  )  
   
