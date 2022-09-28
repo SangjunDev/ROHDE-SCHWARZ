@@ -15,21 +15,19 @@ class Category(models.Model):
   def get_absolute_url(self):
       return f'/blog/category/{self.slug}/'
 
-
-
 class Product(models.Model):
 
   # 상품명
-  name = models.TextField(null=True, default='')
+  name = models.TextField(null=True, default='',verbose_name='상품명')
   # 간단한 설명
-  about = models.TextField(null=True,default='')
+  about = models.TextField(null=True,default='',verbose_name='간단한 설명')
   
   #데이터 시트 및 기타 자료 요청
-  DataSheet_Etc = models.TextField(null=True,default='')
+  DataSheet_Etc = models.TextField(null=True,default='',verbose_name='데이터 시트 및 기타 자료')
   
   
-  category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL, default='')
-  
+  category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL, default='' ,verbose_name='카테고리')
+
   def __str__(self):
     return f'[{self.pk}] {self.name}'
   
@@ -39,21 +37,30 @@ class Product(models.Model):
   class Meta:
     db_table = 'product'  
 
-def image_upload_path(instance, filename):
-    return f'upload_file/product/{instance.product.name}/{filename}'    
+def product_mage_upload_path(instance, filename):
+    return f'upload_file/product/main/{instance.product.name}/{filename}'
+  
+def information_mage_upload_path(instance, filename):
+    return f'upload_file/product/information/{instance.product.name}/{filename}'
+     
+def specification_mage_upload_path(instance, filename):
+    return f'upload_file/product/specification/{instance.product.name}/{filename}'
+
+def option_mage_upload_path(instance, filename):
+    return f'upload_file/product/option/{instance.product.name}/{filename}'                
 
 class ProductImage(models.Model):
   product = models.ForeignKey(Product, on_delete=models.CASCADE)
   
     #제품 사진
-  product_Image = models.ImageField(upload_to="upload_file/product/main", blank=True, default='')
+  product_Image = models.ImageField(upload_to=product_mage_upload_path, blank=True, default='',verbose_name='메인 이미지')
   
   #제품 설명 사진
-  information_Image = models.ImageField(upload_to="upload_file/product/information", blank=True, default='')
+  information_Image = models.ImageField(upload_to=information_mage_upload_path, blank=True, default='',verbose_name='설명 이미지')
   
   #제품 사양 사진
-  specification_Image = models.ImageField(upload_to="upload_file/product/specification", blank=True, default='')
+  specification_Image = models.ImageField(upload_to=specification_mage_upload_path, blank=True, default='',verbose_name='사양 이미지')
   
   #제품 옵션 사진
-  option_Image = models.ImageField(upload_to="upload_file/product/option", blank=True, default='')
+  option_Image = models.ImageField(upload_to=option_mage_upload_path, blank=True, default='',verbose_name='옵션 이미지')
       
