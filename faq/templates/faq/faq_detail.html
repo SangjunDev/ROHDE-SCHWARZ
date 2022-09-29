@@ -47,7 +47,7 @@
         src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
         <body>
             {% include 'blog/navbar.html' %}
-            {% include 'contact/modal.html' %}
+            {% include 'support/modal.html' %}
 
             <!-- Breadcrumb-->
             <div class="bg-light py-2">
@@ -57,37 +57,56 @@
                             <li class="breadcrumb-item">
                                 <a class="reset-anchor" href="/">Home</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                            <li class="breadcrumb-item active" aria-current="page">Support / Notic</li>
                         </ol>
                     </nav>
                 </div>
             </div>
 
-            <div class="inputbox_container">
-                <form id="inputbox" method="POST" action="">
-                    {% csrf_token %}
-                    <label for="company_input">회사명</label>
-                    <input id="title_input" class="input_item" type="text" name= "company">
+            <section class="pb-5">
+                <div class="container">
+                    <div class="row">
+                        <!-- Item information-->
+                        <div class="col-xl-10 mx-auto">
+                
+                            <div class="tab-content" id="myTabContent">
+                                <div
+                                    class="tab-pane fade show active"
+                                    id="description"
+                                    role="tabpanel"
+                                    aria-labelledby="description-tab">
+                                    <div class="p-3 p-md-5">
+                                      <div class = "row mt-5">
+                                        <div class = "col-12">
+                                            <div class = "form-group">
+                                                <strong>{{ faq.title }}</strong><span>[공지사항]</span>
+                                                <span>{{ faq.registered_date|date:'Y.m.d. H:i' }}</span>
+                                            </div>
+                                            <div class="card-body">
+                                                <!--작성자, 조회수-->
+                                                <div>
+                                                    <span>작성자 : {{ faq.writer }}</span>
+                                                    <span>조회수 : {{ faq.hits }}</span>
+                                                </div>
+                                                <!--내용-->
+                                                <div>
+                                                    {{ faq.content }}
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <button onclick="location.href='/support/faq'">목록으로</button>
+                                        </div>
+                                    </div>
+                                 </div>
+                                </div>
+                              </div>
+                        </section>
 
-                    <label for="position_input">부서/직책</label>
-                    <input id="title_input" class="input_item" type="text" name= "position">
-
-                    <label for="name_input">이름</label>
-                    <input id="title_input" class="input_item" type="text" name= "name">
-
-                    <label for="phone_input">전화번호</label>
-                    <input id="title_input" class="input_item" type="text" name= "phone">
-
-                    <label for="email_input">이메일</label>
-                    <input id="email_input" class="input_item" type="text" name="email">
-
-                    <label data-aos="fade-up"  for="message_input">문의내용</label>
-                    <textarea id="message_input" class="input_item" type="text" name="message"></textarea>
-
-                    <button class="reset-button" id="submit_btn" type="submit">SEND</button>
-                </form>
-            </div>
             
+            
+
+
+        
 
                         {%include 'blog/footer.html'%}
 

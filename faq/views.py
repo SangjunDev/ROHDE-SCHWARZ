@@ -6,10 +6,10 @@ from django.views.generic import ListView
 from django.db.models import Q
 from datetime import date, datetime, timedelta
 
-class NoticListView(ListView):
-    model = Notic
+class FaqListView(ListView):
+    model = Faq
     paginate_by = 8
-    context_object_name = 'notic_list'        #DEFAULT : <model_name>_list
+    context_object_name = 'faq_list'        #DEFAULT : <model_name>_list
 
     #공지사항 리스트 페이징
     def get_context_data(self, **kwargs):
@@ -18,12 +18,11 @@ class NoticListView(ListView):
       page_numbers_range = 5
       max_index = len(paginator.page_range)
 
-      page = self.request.GET.get('page',1)
+      page = self.request.GET.get('page', 1)
     
       current_page = int(page) if page else 1
 
       start_index = int((current_page - 1) / page_numbers_range) * page_numbers_range
-      
       end_index = start_index + page_numbers_range
       if end_index >= max_index:
         end_index = max_index
@@ -44,7 +43,7 @@ class NoticListView(ListView):
     def get_queryset(self):
       search_keyword = self.request.GET.get('q', '')
       search_type = self.request.GET.get('type', '')
-      notic_list = Notic.objects.order_by('-id') 
+      notic_list = Faq.objects.order_by('-id') 
     
       if search_keyword :
         if len(search_keyword) > 1 :
@@ -61,12 +60,12 @@ class NoticListView(ListView):
       return notic_list
     
 #공지사항 조회수 기능(쿠키이용)
-def notic_detail_view(request, pk):
-  notic = get_object_or_404(Notic, pk = pk)
+def faq_detail_view(request, pk):
+  faq = get_object_or_404(Faq, pk = pk)
   context = { 
-             'notic':notic,
+             'faq':faq,
              }
-  response = render(request, 'support/notic_detail.html', context)
+  response = render(request, 'faq/faq_detail.html', context)
   
   
   expire_date, now =datetime.now(), datetime.now()
@@ -75,19 +74,12 @@ def notic_detail_view(request, pk):
   expire_date -= now
   max_age = expire_date.total_seconds()
   
-  cookie_value = request.COOKIES.get('hitnotic', '_')
+  cookie_value = request.COOKIES.get('hitfaq', '_')
   
   if f'_{pk}_' not in cookie_value:
     cookie_value +=f'{pk}_'
-    response.set_cookie('hitnotic', value = cookie_value, max_age = max_age, httponly=True)
-    notic.hits +=1
-    notic.save()
+    response.set_cookie('hitfaq', value = cookie_value, max_age = max_age, httponly=True)
+    faq.hits +=1
+    faq.save()
     
   return response
-
-
-
-
-    
-  
-  

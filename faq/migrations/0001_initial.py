@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Notic',
+            name='Faq',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=128, verbose_name='제목')),
@@ -25,9 +25,9 @@ class Migration(migrations.Migration):
                 ('writer', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='작성자')),
             ],
             options={
-                'verbose_name': '공지사항',
-                'verbose_name_plural': '공지사항',
-                'db_table': '공지사항',
+                'verbose_name': 'FAQ',
+                'verbose_name_plural': 'FAQ',
+                'db_table': 'FAQ',
             },
         ),
     ]

@@ -181,10 +181,12 @@
                                                                 <span aria-hidden="true">«</span></a>
                                                         </li>
                                                         {% else %}
+                                                         
                                                         <li class="page-item mx-1">
                                                             <a class="page-link py-1" href="#" aria-label="Previous">
                                                                 <span aria-hidden="true">«</span></a>
                                                         </li>
+                                                         
                                                         {% endif %}
 
 
@@ -194,7 +196,7 @@
                                                             <a class="page-link py-1" href="?type={{ type }}&q={{ q }}&page={{ page }}">{{page}}</a>
                                                         </li>
                                                         {% else %}
-                                                        <li class="page-item mx-1">
+                                                        <li class="page-item mx-1 ">
                                                             <a class="page-link py-1" href="?type={{ type }}&q={{ q }}&page={{ page }}">{{page}}</a>
                                                         </li>
 
@@ -210,7 +212,7 @@
                                                         {% else %}
                                                         <li class="page-item mx-1">
                                                             <a class="page-link py-1" href="#" aria-label="Next">
-                                                                <span aria-hidden="true">»</span></a>
+                                                                <span aria-hidden="ture">»</span></a>
                                                         </li>
 
                                                         {% endif %}
@@ -242,6 +244,17 @@
                         <script src="{% static 'js/theme.b8c44118.js'%}"></script>
                         <script src="{% static 'js/js-cookie.55cdbe0d.js'%}"></script>
                         <script src="{% static 'js/demo.7c677988.js'%}"></script>
+
+                        <script type="text/javascript">
+                            target = window.location.search.split('&')[0].split('=')[1]
+                            var type = document.getElementsByTagName('option')
+                            for (var i = 0; i < 5; i++) {
+                                if (type[i].value === target) {
+                                    type[i].setAttribute('selected', 'selected')
+                                }
+                            }
+                        </script>
+                        
                         <script>
                             /* ==============================================
           CUSTOM SELECT

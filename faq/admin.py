@@ -1,10 +1,7 @@
 from django.contrib import admin
-from .models import Notic
+from .models import Faq
 
-# Register your models here.
-
-
-class NoticAdmin(admin.ModelAdmin):
+class FaqAdmin(admin.ModelAdmin):
     list_display = (
         'title', 
         'writer', 
@@ -13,4 +10,6 @@ class NoticAdmin(admin.ModelAdmin):
         )
     search_fields = ('title', 'content', 'writer__user_id',)
 
-admin.site.register(Notic, NoticAdmin)
+admin.site.register(Faq, FaqAdmin)
+
+
