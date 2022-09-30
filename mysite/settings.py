@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'about',
     'contact',
     'faq',
+    'search_app',
     
 ]
 
@@ -86,7 +87,7 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'ROHDE&SCHWARZ',
+        'NAME':'ROHDE&SCHWARZ3',
         'USER':'postgres',
         'PASSWORD': '1234qwer',
         'HOST': 'localhost',

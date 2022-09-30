@@ -110,15 +110,23 @@
                             
                         <div class="row">
                             
-                            {% for p in product_list %}
+                            {%if shop_list%}
+                            {% for p in shop_list %}
+                            
                             <!-- Product-->
                             <div class="col-xl-4 col-lg-4 col-6">
                                 <div class="product mb-4">
                                     <a href="{{p.get_absolute_url}}">
+                                        {% if p.productImage%}
+                                        {% for i in p.productImage.all%}
                                         <img
                                             class="img-fluid"
-                                            src="{{p.product_Image.url}}"
-                                            alt="silver black round Ipod">
+                                            
+                                            src="{{i.image.url}}"
+                                            
+                                            alt="error">
+                                         {%endfor%}
+                                         {% endif %}   
                                         </a>
                                         <div class="cta shadow d-inline-block"></div>
                                     
@@ -129,6 +137,7 @@
                                 </div>
 
                             {% endfor %}
+                            {% endif %}
                             </div>
 
                             <!-- Pagination-->

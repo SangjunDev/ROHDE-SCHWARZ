@@ -17,7 +17,7 @@ class Notic(models.Model):
         return self.title
 
     class Meta:
-        db_table = '공지사항'
+        db_table = 'notic'
         verbose_name = '공지사항'
         verbose_name_plural = '공지사항'
 

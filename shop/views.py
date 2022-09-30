@@ -3,6 +3,7 @@ from .models import *
 
 class ShopList(ListView):
   model = Product
+  context_object_name = 'shop_list' 
   ordering = '-pk'
   
 class ShopDetail(DetailView):

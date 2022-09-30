@@ -12,7 +12,7 @@ class Faq(models.Model):
         return self.title
 
     class Meta:
-        db_table = 'FAQ'
+        db_table = 'faq'
         verbose_name = 'FAQ'
         verbose_name_plural = 'FAQ'
 
