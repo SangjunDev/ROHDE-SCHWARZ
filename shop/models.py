@@ -12,7 +12,7 @@ class Category(models.Model):
     verbose_name_plural = '제품 카테고리'
     
   def get_absolute_url(self):
-      return f'/blog/category/{self.slug}/'    
+      return f'/shop/{self.slug}/'    
   
 
 

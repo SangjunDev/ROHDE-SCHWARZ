@@ -72,7 +72,7 @@
                             <div class="swiper-wrapper" id="swiper-wrapper-9327517b0ff10d9b2" aria-live="polite" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
                                 {%if product_images%}
                                 {% for p in product_images%}
-                                <div class="swiper-slide swiper-slide-visible" role="group" style="height: 61.25px; margin-bottom: 40px;">
+                                <div class="swiper-slide swiper-slide-visible" role="group" aria-label="{{p.pk}} / 3" style="height: 61.25px; margin-bottom: 40px;">
                                 <img class="img-fluid" src="{{p.productimages.url}}" alt="..">
                             </div>
                             {%endfor%}
@@ -88,7 +88,7 @@
                           
                           <div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events" id="detailSlider">   
                             
-                            <div class="swiper-wrapper" id="swiper-wrapper-55cf1c7481149d69" aria-live="polite" style="transform: translate3d(-451px, 0px, 0px); transition-duration: 0ms;">
+                            <div class="swiper-wrapper" id="swiper-wrapper-55cf1c7481149d69" aria-live="polite" aria-label="{{p.pk}} / 3" style="transform: translate3d(-451px, 0px, 0px); transition-duration: 0ms;">
                                 {%if product_images%}
                                 {% for p in product_images%}
                                 <div class="swiper-slide" role="group" style=";width:441px; margin-right: 10px;">

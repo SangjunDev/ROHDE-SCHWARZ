@@ -54,7 +54,7 @@
                         <li class="breadcrumb-item">
                             <a class="reset-anchor" href="index.html">Home</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                        <li class="breadcrumb-item active" aria-current="page">Shop / {{category.name}}</li>
                     </ol>
                 </nav>
             </div>
@@ -66,35 +66,15 @@
                     <!-- Shop sidebar-->
                     <div class="col-xl-2 col-lg-3 order-2 order-lg-1">
                         <h5 class="mb-4">Shop by Category</h5>
+                        
                         <ul class="list-unstyled text-muted mb-5">
+                            {% for cat in category_list%}
                             <li class="mb-2 d-flex align-items-center justify-content-between">
-                                <a class="reset-anchor" href="/shop/osciiloscope">오실로스코프</a>
+                                <a class="reset-anchor" href="{{cat.get_absolute_url}}">{{cat.name}}</a>
                                 <span class="badge bg-light text-dark"></span></li>
-                            <li class="mb-2 d-flex align-items-center justify-content-between">
-                                <a class="reset-anchor" href="#">미터 &amp; 카운터</a>
-                                <span class="badge bg-light text-dark"></span></li>
-                            <li class="mb-2 d-flex align-items-center justify-content-between">
-                                <a class="reset-anchor" href="#">직류 전원 공급장치</a>
-                                <span class="badge bg-light text-dark"></span></li>
-                            <li class="mb-2 d-flex align-items-center justify-content-between">
-                                <a class="reset-anchor" href="#">신호 &amp; 스펙트럼 분석기</a>
-                                <span class="badge bg-light text-dark"></span></li>
-                            <li class="mb-2 d-flex align-items-center justify-content-between">
-                                <a class="reset-anchor" href="#">신호발생기</a>
-                                <span class="badge bg-light text-dark"></span></li>
-                            <li class="mb-2 d-flex align-items-center justify-content-between">
-                                <a class="reset-anchor" href="#">네트워크 분석기</a>
-                                <span class="badge bg-light text-dark"></span></li>
-                            <li class="mb-2 d-flex align-items-center justify-content-between">
-                                <a class="reset-anchor" href="#">오디오 분석기</a>
-                                <span class="badge bg-light text-dark"></span></li>
-                            <li class="mb-2 d-flex align-items-center justify-content-between">
-                                <a class="reset-anchor" href="#">EMC</a>
-                                <span class="badge bg-light text-dark"></span></li>
-                            <li class="mb-2 d-flex align-items-center justify-content-between">
-                                <a class="reset-anchor" href="#">파워센서</a>
-                                <span class="badge bg-light text-dark"></span></li>
+                                {% endfor %}
                         </ul>
+                        
                     </div>
                     <!-- Shop listing-->
                     <div class="col-xl-10 col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
@@ -102,9 +82,9 @@
                         <div class="row mb-4 pb-3 align-items-center">
                             <div class="col-md-6 text-center text-md-start">
                                 <p class="small text-muted">Showing
-                                    <strong class="text-dark">{{page_obj.number}}
+                                    <strong class="text-dark">{{product_list.number}}
                                     </strong>of
-                                    <strong class="text-dark">{{page_obj.paginator.num_pages}}
+                                    <strong class="text-dark">{{product_list.paginator.count}}
                                     </strong>pages</p>
                             </div>
                         </div>
@@ -144,11 +124,11 @@
 
                             <!-- Pagination-->
                             <nav class="pt-5" aria-label="Page navigation">                                                
-                                {% if is_paginated %}
+                                {% if product_list %}
                                   <ul class="pagination justify-content-center justify-content-lg-end mb-0">
-                                      {% if page_obj.has_previous %}
+                                      {% if product_list.has_previous %}
                                       <li class="page-item mx-1">
-                                          <a class="page-link py-1" href="?type={{ type }}&q={{ q }}&page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                          <a class="page-link py-1" href="?page={{ product_list.previous_page_number }}" aria-label="Previous">
                                               <span aria-hidden="true">«</span></a>
                                       </li>
                                       {% else %}
@@ -161,23 +141,23 @@
                                       {% endif %}
 
 
-                                      {% for page in page_range %}
-                                      {% if page == page_obj.number  %}
+                                      {% for page in product_list.paginator.page_range %}
+                                      {% if page == product_list.number  %}
                                       <li class="page-item mx-1 active">
-                                          <a class="page-link py-1" href="?type={{ type }}&q={{ q }}&page={{ page }}">{{page}}</a>
+                                          <a class="page-link py-1" href="?page={{ page }}">{{page}}</a>
                                       </li>
                                       {% else %}
                                       <li class="page-item mx-1 ">
-                                          <a class="page-link py-1" href="?type={{ type }}&q={{ q }}&page={{ page }}">{{page}}</a>
+                                          <a class="page-link py-1" href="?page={{ page }}">{{page}}</a>
                                       </li>
 
                                       {% endif %}
                                       {% endfor %}
 
                                       
-                                      {% if page_obj.has_next %}
+                                      {% if product_list.has_next %}
                                       <li class="page-item mx-1">
-                                          <a class="page-link py-1" href="?type={{ type }}&q={{ q }}&page={{ page_obj.next_page_number }}" aria-label="Next">
+                                          <a class="page-link py-1" href="?page={{ product_list.next_page_number }}" aria-label="Next">
                                               <span aria-hidden="true">»</span></a>
                                       </li>
                                       {% else %}
@@ -197,6 +177,10 @@
                 </div>
             </div>
         </section>
+        <form id="searchForm" method="get" action="/">
+            <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+            <input type="hidden" id="page" name="page" value="{{ page }}">
+        </form>
         {% include 'blog/footer.html' %}
 
         <!-- JavaScript files-->

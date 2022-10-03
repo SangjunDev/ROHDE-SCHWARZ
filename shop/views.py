@@ -3,6 +3,32 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.contrib import messages
 from django.db.models import Q
+from django.core.paginator import Paginator  
+
+def category_page(request, slug):
+  
+  category = Category.objects.get(slug=slug)
+  product = Product.objects.filter(category=category)
+  page = request.GET.get('page', '1')  # 페이지
+  paginator = Paginator(product, 10)  # 페이지당 10개씩 보여주기
+  page_obj = paginator.get_page(page)
+  
+  
+   
+  
+  return render(
+    request,
+    'shop/product_list.html',
+    { 
+      
+      'product_list':page_obj,
+      'category_list': Category.objects.all(),
+      'category': category,
+      'page' : page,
+      
+    }
+    
+  )
 
 class ShopList(ListView):
   model = Product
@@ -11,6 +37,7 @@ class ShopList(ListView):
 
   def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
+      context['category_list'] = Category.objects.all()
       paginator = context['paginator']
       page_numbers_range = 5
       max_index = len(paginator.page_range)
@@ -40,7 +67,7 @@ class ShopList(ListView):
   def get_queryset(self):
       search_keyword = self.request.GET.get('q', '')
       search_type = self.request.GET.get('type', '')
-      product_list = Product.objects.order_by('-id') 
+      product_list = Product.objects.order_by('id') 
     
       if search_keyword :
         if len(search_keyword) > 1 :
@@ -57,7 +84,7 @@ class ShopList(ListView):
       return product_list     
   
   
-def ShopDetail(request,name,pk,category):
+def ShopDetail(request,pk,category,name):
 
   product = Product.objects.get(pk=pk)
   product_images = ProductImage.objects.filter(product=product)
@@ -75,3 +102,4 @@ def ShopDetail(request,name,pk,category):
 
   return render( request, 'shop/product_detail.html', context )  
   
+
