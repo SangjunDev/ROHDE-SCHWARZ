@@ -49,156 +49,90 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 bg-light">
                             <li class="breadcrumb-item">
-                                <a class="reset-anchor" href="index.html">Home</a>
+                                <a class="reset-anchor" href="/">Home</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Shop / 카테고리 예정 / {{product.name}}
+                            <li class="breadcrumb-item active" aria-current="page">Shop / {{product_list.category}} / {{product_list.name}} 
                             </li>
 
                         </ol>
                     </nav>
                 </div>
             </div>
+
             <section class="py-5">
                 <div class="container py-5">
-                    <div class="row">
-                        <div class="col-lg-6 mb-5 mb-lg-0">
-                            <div class="row">
-                                <div class="col-md-2 order-2 order-md-1">
+                  <div class="row">
 
-                                    <div
-                                        class="swiper-container swiper-thumbnails swiper-container-initialized
-                        swiper-container-vertical swiper-container-pointer-events
-                        swiper-container-thumbs"
-                                        id="detailSliderThumb">
-                                        <div
-                                            class="swiper-wrapper"
-                                            id="swiper-wrapper-108a5db61930aa4be"
-                                            aria-live="polite"
-                                            style="transform:
-                        translate3d(0px, 0px, 0px); transition-duration: 0ms;">
-                                            <div
-                                                class="swiper-slide
-                        swiper-slide-visible swiper-slide-active swiper-slide-thumb-active"
-                                                role="group"
-                                                aria-label="1 / 3"
-                                                style="height: 115.75px; margin-bottom: 10px;"><img
-                                                class="img-fluid"
-                                                src="{% static 'img\products\osi\RTC1000\main\RTC1000_01.jpg'%}"
-                                                alt=".."></div>
-                                            <div
-                                                class="swiper-slide swiper-slide-visible swiper-slide-next"
-                                                role="group"
-                                                aria-label="2 / 3"
-                                                style="height: 115.75px; margin-bottom: 10px;"><img
-                                                class="img-fluid"
-                                                src="{% static 'img\products\osi\RTC1000\main\RTC1000_02.jpg'%}"
-                                                alt=".."></div>
-                                            <div
-                                                class="swiper-slide swiper-slide-visible"
-                                                role="group"
-                                                aria-label="3 / 3"
-                                                style="height: 115.75px; margin-bottom: 10px;"><img
-                                                class="img-fluid"
-                                                src="{%static 'img\products\osi\RTC1000\main\RTC1000_03.jpg'%}"
-                                                alt=".."></div>
-                                        </div>
-                                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-10 order-1
-                        order-md-2 mb-4 mb-lg-0">
-                                    <!-- Item slider -->
-                                    <div
-                                        class="swiper-container
-                        swiper-container-initialized swiper-container-horizontal
-                        swiper-container-pointer-events"
-                                        id="detailSlider">
-                                        <div
-                                            class="swiper-wrapper"
-                                            id="swiper-wrapper-8bf61ffaf0b77555"
-                                            aria-live="polite"
-                                            style="transform:
-                        translate3d(0px, 0px, 0px); transition-duration: 0ms;">
-                                            <div
-                                                class="swiper-slide
-                        swiper-slide-active"
-                                                role="group"
-                                                aria-label="1 / 3"
-                                                style="width: 569px;
-                        margin-right: 10px;">
-                                                <a
-                                                    class="glightbox"
-                                                    href="{% static 'img\products\osi\RTC1000\main\RTC1000_01.jpg'%}"><img
-                                                    class="img-fluid"
-                                                    src="{%static 'img\products\osi\RTC1000\main\RTC1000_01.jpg'%}"
-                                                    alt=".."></a>
-                                            </div>
-                                            <div
-                                                class="swiper-slide swiper-slide-next"
-                                                role="group"
-                                                aria-label="2 / 3"
-                                                style="width: 569px; margin-right: 10px;">
-                                                <a
-                                                    class="glightbox"
-                                                    href="{% static 'img\products\osi\RTC1000\main\RTC1000_02.jpg'%}"><img
-                                                    class="img-fluid"
-                                                    src="{%static 'img\products\osi\RTC1000\main\RTC1000_02.jpg'%}"
-                                                    alt=".."></a>
-                                            </div>
-                                            <div
-                                                class="swiper-slide"
-                                                role="group"
-                                                aria-label="3 / 3"
-                                                style="width: 569px;
-                        margin-right: 10px;">
-                                                <a
-                                                    class="glightbox"
-                                                    href="{% static 'img\products\osi\RTC1000\main\RTC1000_03.jpg'%}"><img
-                                                    class="img-fluid"
-                                                    src="{%static 'img\products\osi\RTC1000\main\RTC1000_03.jpg'%}"
-                                                    alt=".."></a>
-                                            </div>
-                                        </div>
-                                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-                                </div>
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                      <div class="row">
+
+                        <div class="col-md-2 order-2 order-md-1">
+                          <!-- Slider thumbnails-->
+                          <div class="swiper-container swiper-thumbnails swiper-container-initialized swiper-container-vertical swiper-container-pointer-events swiper-container-thumbs" id="detailSliderThumb">   
+                            <div class="swiper-wrapper" id="swiper-wrapper-9327517b0ff10d9b2" aria-live="polite" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                                {%if product_images%}
+                                {% for p in product_images%}
+                                <div class="swiper-slide swiper-slide-visible" role="group" style="height: 61.25px; margin-bottom: 40px;">
+                                <img class="img-fluid" src="{{p.productimages.url}}" alt="..">
                             </div>
+                            {%endfor%}
+                            {%endif%}  
+                            </div>
+                          <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
                         </div>
 
-                        <!-- Item info-->
                         
-                        <div class="col-lg-6">
+                        <div class="col-md-10 order-1 order-md-2 mb-4 mb-lg-0">
                             
-                            <div class="badge bg-info small rounded-0 mb-2"></div>
-                            <h1>{{product.name}}</h1>
-                            <div class="d-flex align-items-center"></div><br>
-                            <ul class="list-unstyled small d-inline-block">
-                                <li class="px-3 py-2 mb-1 bg-light text-muted">
-                                    <strong class="text-uppercase text-dark">대역폭:</strong>
-                                    <a class="reset-anchor ms-2"> 50 MHz ~ 300 MHz</a></li>
-                                <li class="px-3 py-2 mb-1 bg-light text-muted">
-                                    <strong class="text-uppercase text-dark">최대 샘플링 속도:</strong>
-                                    <a class="reset-anchor ms-2">2 Gsample/s</a>
-                                </li>
-                                <li class="px-3 py-2 mb-1 bg-light text-muted">
-                                    <strong class="text-uppercase text-dark">최대 메모리 크기:</strong>
-                                    <a class="reset-anchor ms-2">2 Msample</a>
-                                </li>
-                                <li class="px-3 py-2 mb-1 bg-light text-muted">
-                                    <strong class="text-uppercase text-dark">MSO:</strong>
-                                    <a class="reset-anchor ms-2">8개 디지털 채널, 옵션, 부품 교체 가능</a>
-                                </li>
-
-                                <li class="px-3 py-2 mb-1 bg-light text-muted">
-                                    <strong class="text-uppercase text-dark">패턴 발생기:</strong>
-                                    <a class="reset-anchor ms-2">최대 50 Mbit/s의 4비트 패턴</a>
-                                </li>
-                            </ul>
+                          <!-- Item slider-->
+                          
+                          <div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events" id="detailSlider">   
                             
+                            <div class="swiper-wrapper" id="swiper-wrapper-55cf1c7481149d69" aria-live="polite" style="transform: translate3d(-451px, 0px, 0px); transition-duration: 0ms;">
+                                {%if product_images%}
+                                {% for p in product_images%}
+                                <div class="swiper-slide" role="group" style=";width:441px; margin-right: 10px;">
+                                <a class="glightbox" href="{{p.productimages.url}}">
+                                    <img class="img-fluid" src="{{p.productimages.url}}" alt="..">
+                                </a>
+                            </div>
+                            {%endfor%}
+                            {%endif%}  
+                        </div>
+                          <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                         </div>
                         
+                        </div>
+                      </div>
                     </div>
+
+                    <!-- Item info-->
+                    <div class="col-lg-6">
+                        <div class="badge bg-info small rounded-0 mb-2"></div>
+                      <h3>{{product_list.name}}</h3>
+                      <div class="d-flex align-items-center">
+                      </div><br>
+                      <div class="d-flex flex-wrap align-items-center mb-4">
+                        
+                        <p class="mb-0 me-3" style="line-height: 1.8;">{{product_list.about|linebreaksbr}}</p>
+                      </div>
+                      <div class="d-flex align-items-center mb-4">
+                        
+                        
+                        <p class="text-small mb-4">
+                        </p>
+                    </div>
+
+                  </div>
                 </div>
-            </section><br>
+              </section><br>
+
+            
+
+
+
+
+
             <section class="pb-5">
                 <div class="container">
                     <div class="row">
@@ -223,7 +157,7 @@
                                         class="nav-link text-small fw-bold py-3 border-0"
                                         id="info-tab"
                                         data-bs-toggle="tab"
-                                        href="#info"
+                                        href="#Specification"
                                         role="tab"
                                         aria-controls="info"
                                         aria-selected="false">Specification</a>
@@ -233,7 +167,7 @@
                                         class="nav-link text-small fw-bold py-3 border-0"
                                         id="reviews-tab"
                                         data-bs-toggle="tab"
-                                        href="#reviews"
+                                        href="#Option"
                                         role="tab"
                                         aria-controls="reviews"
                                         aria-selected="false">
@@ -244,7 +178,7 @@
                                         class="nav-link text-small fw-bold py-3 border-0"
                                         id="shipping-tab"
                                         data-bs-toggle="tab"
-                                        href="#shipping"
+                                        href="#Etc"
                                         role="tab"
                                         aria-controls="shipping"
                                         aria-selected="false">Data Sheet &amp; Etc</a>
@@ -257,55 +191,67 @@
                                     role="tabpanel"
                                     aria-labelledby="description-tab">
                                     <div class="p-3 p-md-5">
-                                        <p class="small text-muted mb-1">RTC1000 Oscilloscope</p>
+                                        <p class="small text-muted mb-1">{{product_list.name}}</p>
                                         <h5 class="mb-4">제품 설명</h5>
                                         <div class="row align-items-center mb-4">
-                                            
+                                            {%if info_images%}
+                                            {%for info in info_images%}
                                             <div class="col-lg-12 mb-12 mb-lg-0"><img
                                                 class="img-fluid"
-                                                src="{{product.information_Image.url}}"
+                                                src="{{info.informationimages.url}}"
                                                 alt=".."></div>
-  
+                                            {% endfor %}
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+                                <div class="tab-pane fade" id="Specification" role="tabpanel" aria-labelledby="info-tab">
                                     <div class="p-3 p-md-5">
-                                        <p class="small text-muted mb-1">RTC1000 Oscilloscope</p>
+                                        <p class="small text-muted mb-1">{{product_list.name}}</p>
                                         <h5 class="mb-4">제품 사양</h5>
+                                        
                                         <div class="row align-items-center mb-4">
+                                            {% if spec_images%}
+                                            {% for spec in spec_images%}
                                             <div class="col-lg-12 mb-12 mb-lg-0"><img
                                                 class="img-fluid"
-                                                src="{{product.specification_Image.url}}"
+                                                src="{{spec.specificationimages.url}}"
                                                 alt=".."></div>
+                                          {% endfor %}      
+                                          {% endif %}
                                         </div>
+                                        
                                     </div>
                                 </div>
 
                                 <div
                                     class="tab-pane fade"
-                                    id="reviews"
+                                    id="Option"
                                     role="tabpanel"
                                     aria-labelledby="reviews-tab">
                                     <div class="p-3 p-md-5">
-                                        <p class="small text-muted mb-1">RTC1000 Oscilloscope</p>
+                                        <p class="small text-muted mb-1">{{product_list.name}}</p>
                                         <h5 class="mb-4">제품 옵션</h5>
                                         <div class="row align-items-center mb-4">
+                                            {% if option_images%}
+                                            {% for opt in option_images%}
                                             <div class="col-lg-12 mb-12 mb-lg-0"><img
                                                 class="img-fluid"
-                                                src="{{product.option_Image.url}}"
+                                                src="{{opt.optionimages.url}}"
                                                 alt=".."></div>
+                                                {% endfor %} 
+                                                {% endif %}
                                         </div>
                                     </div>
                                 </div>
                                 <div
                                     class="tab-pane fade"
-                                    id="shipping"
+                                    id="Etc"
                                     role="tabpanel"
                                     aria-labelledby="shipping-tab">
                                     <div class="p-3 p-md-5">
-                                        <p class="small text-muted mb-1">RTC1000 Oscilloscope</p>
+                                        <p class="small text-muted mb-1">{{product_list.name}}</p>
                                         <h5 class="mb-4">데이터 시트 및 기타 자료</h5>
                                         <p> 윤동권 부장(010-5546-1974, yoondk@cndi.co.kr) 혹은 <br>
                                             양두길 부장(010-3753-6221, jeff@cndi.co.kr)

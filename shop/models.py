@@ -1,10 +1,25 @@
+from enum import unique
 from django.db import models
 
+class Category(models.Model):
+  name = models.CharField(max_length = 50, unique=True)
+  slug = models.SlugField(max_length=200, unique=True, allow_unicode=True)
+    
+  def __str__(self):
+    return self.name
+  
+  class Meta:
+    verbose_name_plural = '제품 카테고리'
+    
+  def get_absolute_url(self):
+      return f'/blog/category/{self.slug}/'    
+  
 
 
- 
 
 class Product(models.Model):
+  # 제품 카테고리
+  category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
 
   # 상품명
   name = models.TextField(blank=False, default='',verbose_name='상품명')
@@ -17,15 +32,12 @@ class Product(models.Model):
   
   #데이터 시트 및 기타 자료 요청
   DataSheet_Etc = models.TextField(blank=False,default='',verbose_name='데이터 시트 및 기타 자료')
-  
-  
-  
-  
+
   def __str__(self):
     return f'[{self.pk}] {self.name}'
   
   def get_absolute_url(self):
-      return f'/shop/{self.name}/{self.pk}'
+      return f'/shop/{self.category}/{self.name}/{self.pk}'
     
   class Meta:
     db_table = 'product'
@@ -49,8 +61,6 @@ class ProductImage(models.Model):
   
     #제품 사진
   productimages = models.ImageField(upload_to=product_image_upload_path, blank=False, default='',verbose_name='제품 이미지')
-  
-  
   
 class InfoImage(models.Model):
   product = models.ForeignKey(Product, on_delete=models.CASCADE)

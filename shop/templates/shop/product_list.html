@@ -102,66 +102,96 @@
                         <div class="row mb-4 pb-3 align-items-center">
                             <div class="col-md-6 text-center text-md-start">
                                 <p class="small text-muted">Showing
-                                    <strong class="text-dark">12
+                                    <strong class="text-dark">{{page_obj.number}}
                                     </strong>of
-                                    <strong class="text-dark">265
-                                    </strong>items</p>
-                            </div><br><br>
-                            
-                        <div class="row">
-                            
-                            {%if shop_list%}
-                            {% for p in shop_list %}
-                            
+                                    <strong class="text-dark">{{page_obj.paginator.num_pages}}
+                                    </strong>pages</p>
+                            </div>
+                        </div>
+
+                        <div class="row"> 
                             <!-- Product-->
-                            <div class="col-xl-4 col-lg-4 col-6">
-                                <div class="product mb-4">
+                            {%if product_list%}
+                                {% for p in product_list %}
+                            <div class="col-xl-6 col-lg-4 col-6">
+                                
+                                <div class="row"> 
+
+                                <div class="col-xl-6 product mb-4">
                                     <a href="{{p.get_absolute_url}}">
-                                        {% if p.productImage%}
-                                        {% for i in p.productImage.all%}
+                                        
                                         <img
                                             class="img-fluid"
                                             
-                                            src="{{i.image.url}}"
+                                            src="{{p.image.url}}"
                                             
                                             alt="error">
-                                         {%endfor%}
-                                         {% endif %}   
+    
                                         </a>
                                         <div class="cta shadow d-inline-block"></div>
-                                    
-                                    <h6 class="text-center">
+                                        
+                                </div>
+                                <div class="col-xl-6 product mb-4">
+                                    <h6 class="text-left">
                                         <a class="reset-anchor" href="{{p.get_absolute_url}}">{{p.name}}</a>
                                     </h6>
-                                    <p class="text-center text-muted font-weight-bold mb-4">{{p.about}}</p>
+                                    <p class="text-left text-muted font-weight-bold mb-4" style="font-size:14px">{{p.about|linebreaksbr}}</p>
                                 </div>
-
-                            {% endfor %}
-                            {% endif %}
+                                </div>
                             </div>
+                            {% endfor %}
+                                    {%endif%}
 
                             <!-- Pagination-->
-                            <nav class="pt-5" aria-label="Page navigation">
-                                <ul class="pagination justify-content-center justify-content-lg-end mb-0">
-                                    <li class="page-item mx-1">
-                                        <a class="page-link py-1" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">«</span></a>
-                                    </li>
-                                    <li class="page-item mx-1 active">
-                                        <a class="page-link py-1" href="#">1</a>
-                                    </li>
-                                    <li class="page-item mx-1">
-                                        <a class="page-link py-1" href="#">2</a>
-                                    </li>
-                                    <li class="page-item mx-1">
-                                        <a class="page-link py-1" href="#">3</a>
-                                    </li>
-                                    <li class="page-item mx-1">
-                                        <a class="page-link py-1" href="#" aria-label="Next">
-                                            <span aria-hidden="true">»</span></a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            <nav class="pt-5" aria-label="Page navigation">                                                
+                                {% if is_paginated %}
+                                  <ul class="pagination justify-content-center justify-content-lg-end mb-0">
+                                      {% if page_obj.has_previous %}
+                                      <li class="page-item mx-1">
+                                          <a class="page-link py-1" href="?type={{ type }}&q={{ q }}&page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                              <span aria-hidden="true">«</span></a>
+                                      </li>
+                                      {% else %}
+                                       
+                                      <li class="page-item mx-1">
+                                          <a class="page-link py-1" href="#" aria-label="Previous">
+                                              <span aria-hidden="true">«</span></a>
+                                      </li>
+                                       
+                                      {% endif %}
+
+
+                                      {% for page in page_range %}
+                                      {% if page == page_obj.number  %}
+                                      <li class="page-item mx-1 active">
+                                          <a class="page-link py-1" href="?type={{ type }}&q={{ q }}&page={{ page }}">{{page}}</a>
+                                      </li>
+                                      {% else %}
+                                      <li class="page-item mx-1 ">
+                                          <a class="page-link py-1" href="?type={{ type }}&q={{ q }}&page={{ page }}">{{page}}</a>
+                                      </li>
+
+                                      {% endif %}
+                                      {% endfor %}
+
+                                      
+                                      {% if page_obj.has_next %}
+                                      <li class="page-item mx-1">
+                                          <a class="page-link py-1" href="?type={{ type }}&q={{ q }}&page={{ page_obj.next_page_number }}" aria-label="Next">
+                                              <span aria-hidden="true">»</span></a>
+                                      </li>
+                                      {% else %}
+                                      <li class="page-item mx-1">
+                                          <a class="page-link py-1" href="#" aria-label="Next">
+                                              <span aria-hidden="ture">»</span></a>
+                                      </li>
+
+                                      {% endif %}
+                                      
+                              </ul>
+                              {% endif %}
+                                                                             
+                          </nav>
                         </div>
                     </div>
                 </div>
