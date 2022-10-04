@@ -8,7 +8,7 @@ from datetime import date, datetime, timedelta
 
 class NoticListView(ListView):
     model = Notic
-    paginate_by = 8
+    paginate_by = 10
     context_object_name = 'notic_list'        #DEFAULT : <model_name>_list
 
     #공지사항 리스트 페이징
