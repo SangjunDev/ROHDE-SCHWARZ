@@ -48,8 +48,8 @@
         {% include 'blog/symbol.html' %}
         {% include 'blog/navbar.html' %}
         {% include 'blog/modal.html' %}
-
-    
+        <section>
+        </section>
         <!-- Hero slider-->
         <section>
             <div
@@ -60,34 +60,27 @@
                     style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
                     <div
                         class="swiper-slide hero bg-center bg-cover d-flex align-items-center "
-                        style="background: url({% static 'img/51007_01.jpg' %}); width: 1088px; height:880px;">
-                        <div class="container">
-                          <!--
+                        style="background: url({% static 'img/test.jpg' %}); width: 1088px; height:880px;">
+            
+                        <div class="fixed-top" style="padding-top:70px">
                             <div class="row text-lg-center">
                                 <div class="col-lg-8" >
-                                    <p class="h6 text-uppercase text-muted mb-3">Summer 2020</p>
+                                    <p class="h6 text-uppercase text-muted mb-3">Rohde & Schwarz Korea</p>
                                     <h1
                                         class="hero-heading line-height-sm mb-2 title"
                                         data-swiper-parallax="-200"
-                                        style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">Fashion Collections</h1>
+                                        style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                                        <font color="#FFFFF">로데슈바르즈 코리아</font></h1>
                                     <div class="row">
                                         <div class="col-lg-5 mx-auto">
                                             <p
                                                 class="font-weight-light text-muted mb-4 mt-3 subtitle"
                                                 data-swiper-parallax="-400"
-                                                style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">Lorem
-                                                ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                                incididunt.</p>
+                                                style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms; font-size:25px"><font color="#FF3333">공식대리점</font> <font color="#FFFFF">씨앤디아이</font></p>
                                         </div>
                                     </div>
-                                    <a
-                                        class="btn btn-primary text"
-                                        href="shop.html"
-                                        data-swiper-parallax="-600"
-                                        style="transform: translate3d(0px, 0px, 0px)">
-                                        <i class="fas fa-shopping-bag me-2"></i>Shop now</a>
                                 </div>
-                                  -->
+                                  
                             </div>
                         </div>
                     </div>
@@ -108,12 +101,14 @@
                   <h3><span class="text-primary">ROHDE &amp; SCHWARZ </span> Contact Us</h3>
                   <p class="text-small text-muted mb-0">더욱 자세한 제품 상담을 원하시면 제품문의 버튼을 눌러 문의 페이지로 이동 해주세요.</p>
                 </div>
-                <div class="col-lg-5">
-                  <form action="#">
-                    <div class="input-group">
-                      <button class="btn btn-primary" id="button-addon2" type="button">Subscribe</button>
+                <div class="col-lg-5" >
+                    
+
+                    <div >
+                        
+                      <button class="btn btn-primary btn-lg" type="button" onClick="location.href='/contact'" style="float:right; border-radius: 5px;">Contact Us</button>
                     </div>
-                  </form>
+
                 </div>
               </div>
             </div>

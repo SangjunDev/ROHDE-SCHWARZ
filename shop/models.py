@@ -4,6 +4,7 @@ from django.db import models
 class Category(models.Model):
   name = models.CharField(max_length = 50, unique=True)
   slug = models.SlugField(max_length=200, unique=True, allow_unicode=True)
+  description = models.CharField(max_length=200, null=True, blank=True)
     
   def __str__(self):
     return self.name

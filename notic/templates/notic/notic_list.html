@@ -71,7 +71,7 @@
                                         <h5 class="mb-4">Support by Category</h5>
                                         <ul class="list-unstyled text-muted mb-5">
                                             <li class="mb-2 d-flex align-items-center justify-content-between">
-                                                <a class="reset-anchor" href="/support/notic">NOTIC</a>
+                                                <a class="reset-anchor" href="/support/notic">공지사항</a>
                                                 <span class="badge bg-light text-dark"></span></li>
                                             <li class="mb-2 d-flex align-items-center justify-content-between">
                                                 <a class="reset-anchor" href="/support/faq">FAQ</a>
@@ -97,37 +97,55 @@
                                             <!-- Product-->
                                             <div class="col-xl-12 col-lg-12 col-6">
                                                 <div class="product mb-4">
-                                                    <table class = "table table-light">
-                                                            <thead>
-                                                                <tr class="text-center">
-                                                                    <th>번호</th>
-                                                                    <th>제목</th>
-                                                                    <th>작성자</th>
-                                                                    <th>등록일</th>
-                                                                    <th>조회수</th>
-                                                                </tr>
-                                                            </thead>
+
+                                                
+                                                    <table class = "table table-hover ">
+                                                        <thead class="table-light">
+                                                            <tr>
+                                                                <th class="p-3 border-0" scope="col"><strong class="text-uppercase">#</strong></th>
+                                                                <th class="p-3 border-0" scope="col"><strong class="text-uppercase">제목</strong></th>
+                                                                <th class="p-3 border-0" scope="col"><strong class="text-uppercase">작성자</strong></th>
+                                                                <th class="p-3 border-0" scope="col"><strong class="text-uppercase">날짜</strong></th>
+                                                                <th class="p-3 border-0" scope="col"><strong class="text-uppercase">조회수</strong></th>
+                                                            </tr>
+                                                        </thead>
                                                             <tbody>
                                                                 {% if notic_list %}
                                                                 {% for notic in notic_list %}
-                                                                <tr class="text-center" onclick="location.href='/support/notic/{{ notic.id }}/'">
-                                                                    <td>{{ notic.id }}</td>
-                                                                    <td>{{ notic.title|truncatechars:30 }}</td>
-                                                                    <td>{{ notic.writer }}</td>
-                                                                    <td>{{ notic.registered_date|date:'Y. m. d' }}</td>
-                                                                    <td>{{ notic.hits }}</td>
-                                                                </tr>
+                                                                <tr class="text-left" onclick="location.href='/support/faq/{{ notic.id }}/'">
+                                                                    <td class="p-3 align-middle border-0">
+                                                                        <p class="mb-0 small">{{ notic.id }}</p>
+                                                                      </td>
+                                                                
+                                                                      <th class="p-3 align-middle border-0" scope="row">
+                                                                        <p class="mb-0 small">{{ notic.title }}</p>
+                                                                    
+                                                                    </th>
+                                                                
+                                                                      <td class="p-3 align-middle border-0">
+                                                                        <p class="mb-0 small">{{ notic.writer }}</p>
+                                                                      </td>
+                                                                
+                                                                      <td class="p-3 align-middle border-0">
+                                                                        <p class="mb-0 small">{{ notic.registered_date|date:'Y. m. d' }}</p>
+                                                                      </td>
+                                                                
+                                                                      <td class="p-3 align-middle border-0">
+                                                                        <p class="mb-0 small">{{ notic.hits }}</p>
+                                                                      </td>
+                                                                    </tr>
                                                                 {% endfor %}
                                                                 {% else %}
                                                                 {% if q %}
-                                                                <tr class="text-center">
-                                                                    <td style="font-weight: bold; color:gray;" colspan="5">
+                                                                <tr class="text-left" style="height:150px">
+                                                                    <td style="font-weight: bold; color:gray; vertical-align: middle!important;" colspan="5">
                                                                         <i class="fas fa-info-circle"></i>&nbsp;일치하는 검색 결과가 없습니다.
                                                                     </td>
                                                                 </tr>
                                                                 {% else %}
-                                                                    <tr class="text-center">
-                                                                        <td style="font-weight: bold; color:gray;" colspan="5">
+                                                                    <tr class="text-center" style="height:150px">
+                                                                        
+                                                                        <td colspan="5" style="font-weight: bold; color:gray; vertical-align: middle!important;"  >
                                                                             <i class="fas fa-info-circle"></i>&nbsp;작성된 게시글이 없습니다.
                                                                         </td>
                                                                     </tr>
@@ -149,21 +167,18 @@
                                                         <div class="col">
                                                             <div style="float: right;" class="form-row">
                                                                 <div class="form-row">
-                                                                    <div class="col" style="margin-top: 10px;">
+                                                                    <div class="col-md-6" style="margin-top: 10px;">
                                                                         <select style="width: 6em;" class="custom-select custom-select-md" name="type">
                                                                             <option value="all">전체</option>
                                                                             <option value="title">제목</option>
                                                                             <option value="content">내용</option>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col" style="margin-top: 10px;">
+                                                                    <div class="col-md-6" style="margin-top: 10px;">
                                                                         <input type="text" name="q" value="{{ q }}" class="form-control form-control-md"
                                                                             style="width: 15em;" placeholder="검색어를 입력해주세요.">
                                                                     </div>
-                                                                    <div class="col">
-                                                                        <!-- <button class="btn btn-md btn-outline-dark" type="submit">검색</button> -->
-                                                                        <button class="btn btn-sm" type="submit" id="search_btn">검색</button>
-                                                                    </div>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>

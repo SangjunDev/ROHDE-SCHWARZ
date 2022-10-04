@@ -3058,8 +3058,8 @@
         }
 
         var player = this.getSlidePlayerInstance(slide);
-        console.log('Player is');
-        console.log(player);
+        //console.log('Player is');
+        //console.log(player);
 
         if (player && !player.playing) {
           player.play();
