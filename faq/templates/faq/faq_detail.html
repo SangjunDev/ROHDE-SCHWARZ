@@ -75,28 +75,36 @@
                                     id="description"
                                     role="tabpanel"
                                     aria-labelledby="description-tab">
-                                    <div class="p-3 p-md-5">
-                                      <div class = "row mt-5">
-                                        <div class = "col-12">
-                                            <div class = "form-group">
-                                                <strong>{{ faq.title }}</strong><span>[공지사항]</span>
-                                                <span>{{ faq.registered_date|date:'Y.m.d. H:i' }}</span>
-                                            </div>
-                                            <div class="card-body">
-                                                <!--작성자, 조회수-->
-                                                <div>
-                                                    <span>작성자 : {{ faq.writer }}</span>
-                                                    <span>조회수 : {{ faq.hits }}</span>
+                                    <div class="container">
+                                        <div class="row-mt-5">
+                                            <div class="col-12">
+                                                <!--본문-->
+                                                <div class="card" style="width: 100%;">
+                                                    <!--제목,분류,작성일-->
+                                                    <div class="card-header">
+                                                        <strong style="font-size: 18px;">{{ faq.title }}</strong>&nbsp;&nbsp;<span style="font-size: 18px; color: gray;">[공지사항]</span>
+                                                        <span style="float:right;">{{ faq.registered_date|date:'Y.m.d. H:i' }}</span>
+                                                    </div>
+                                                    <div class="card-body" style="min-height: 400px; color:black;">
+                                                        <!--작성자, 조회수-->
+                                                        <div>
+                                                            <span><i class="fas fa-user-edit"></i>&nbsp;작성자 : {{ faq.writer }}</span>
+                                                            <span style="float:right;">조회수 : {{ faq.hits }}</span>
+                                                        </div>
+                                                        <hr>
+
+                                                        <!--내용-->
+                                                        <div>
+                                                            {{ faq.content | safe |linebreaksbr}}
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <!--내용-->
-                                                <div>
-                                                    {{ faq.content }}
+                                                <br>
+                                                <div class="text-right" style="margin-top:-15px; float:right;">
+                                                    <button class="btn btn-outline-primary btn-sm" id="detail_btn" onclick="location.href='/support/faq'">목록으로</button>
                                                 </div>
                                             </div>
-                                            </div>
-                                            <button onclick="location.href='/support/faq'">목록으로</button>
                                         </div>
-                                    </div>
                                  </div>
                                 </div>
                               </div>
