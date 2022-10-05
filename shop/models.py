@@ -13,26 +13,41 @@ class Category(models.Model):
     verbose_name_plural = '제품 카테고리'
     
   def get_absolute_url(self):
-      return f'/shop/{self.slug}/'    
+      return f'/shop/{self.slug}/'
+    
+class newCategory(models.Model):
+   name = models.CharField(max_length = 20, unique=True)    
+   
+   def __str__(self):
+      return self.name
+    
+   class Meta:
+      verbose_name_plural = '신제품 카테고리' 
   
 
 
 
 class Product(models.Model):
+  # 신제품 유무 카테고리
+  newCategory = models.ForeignKey(newCategory, null=True, blank=False, on_delete=models.SET_NULL, verbose_name='신제품 유무')
+  
+  # 신제품 URL
+  newUrl = models.TextField(null=True, blank=True, default='',verbose_name='신제품 URL')
+  
   # 제품 카테고리
-  category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
+  category = models.ForeignKey(Category, null=True, blank=False, on_delete=models.SET_NULL)
 
   # 상품명
-  name = models.TextField(blank=False, default='',verbose_name='상품명')
+  name = models.TextField(null=False, blank=False, default='',verbose_name='상품명')
   
   #대표 이미지
-  image = models.ImageField(upload_to = 'upload_file', blank=False, default='',verbose_name='메인 이미지')
+  image = models.ImageField(null=False, blank=False, default='',upload_to = 'upload_file/product/main',verbose_name='메인 이미지')
   
   # 간단한 설명
-  about = models.TextField(blank=False,default='',verbose_name='간단한 설명')
+  about = models.TextField(null=False, blank=False,default='',verbose_name='간단한 설명')
   
   #데이터 시트 및 기타 자료 요청
-  DataSheet_Etc = models.TextField(blank=False,default='',verbose_name='데이터 시트 및 기타 자료')
+  #DataSheet_Etc = models.TextField(blank=False,default='',verbose_name='데이터 시트 및 기타 자료')
 
   def __str__(self):
     return f'[{self.pk}] {self.name}'

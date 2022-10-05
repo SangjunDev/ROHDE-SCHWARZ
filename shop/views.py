@@ -8,15 +8,16 @@ from django.core.paginator import Paginator
 def ShopCategory(request, slug):
   
   category = Category.objects.get(slug=slug)
-  product = Product.objects.filter(category=category)
+  product = Product.objects.filter(category=category).order_by('-pk')
   page = request.GET.get('page', '1')  # 페이지
   paginator = Paginator(product, 6)  # 페이지당 10개씩 보여주기
   page_obj = paginator.get_page(page)
   contenxt = {
-    'product_list':page_obj,
+      'product_list':page_obj,
       'category_list': Category.objects.all(),
       'category': category,
       'page' : page,
+      'newCategory':newCategory.objects.all(),
   }
   
   return render(request,'shop/product_list.html',contenxt)
