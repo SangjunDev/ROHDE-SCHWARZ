@@ -29,7 +29,7 @@ class newCategory(models.Model):
 
 class Product(models.Model):
   # 신제품 유무 카테고리
-  newCategory = models.ForeignKey(newCategory, null=True, blank=False, on_delete=models.SET_NULL, verbose_name='신제품 유무')
+  newCategory = models.ForeignKey(newCategory, null=True, blank=True, on_delete=models.SET_NULL, verbose_name='신제품 유무')
   
   # 신제품 URL
   newUrl = models.TextField(null=True, blank=True, default='',verbose_name='신제품 URL')
