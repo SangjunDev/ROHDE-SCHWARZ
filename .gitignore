@@ -4,3 +4,4 @@ __pycache__/
 migrations/
 media/
 etc/secret_key.json
+secret_key.json
