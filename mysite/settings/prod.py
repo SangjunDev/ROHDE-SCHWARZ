@@ -3,7 +3,6 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD
 ALLOWED_HOSTS = ['*']
 
 # Database
@@ -20,6 +19,3 @@ DATABASES = {
         
     }
 }
-=======
-ALLOWED_HOSTS = ['*']
->>>>>>> 380e93a896a5139b27af7a5f015263fd8f16e6fc
