@@ -43,18 +43,37 @@
         <script src= "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
-        <style type="text/css">
-            .pop_wrap { position:absolute; left:10px; top:10px; z-index:10000; background:#000; width:1136px; }
-            .pop_wrap > ul { width:1136px; }
-            .pop_wrap > ul:after { content:""; display:block; clear:both; }
-            .pop_wrap > ul > li { float:left; }
-            .popup_close { padding:8px 15px 12px; background:#000; height:14px; }
-            .popup_close ul { float:right; height:14px; }
-            .popup_close li { float:left; }
-            .popup_close li.today { padding-right:18px; margin-right:17px; background:url('') right 2px no-repeat; }
-            .popup_close li a { font-size:14px; color:#fff; }
-            .popup_close li.close a { display:block; padding-right:14px; background:url('') right 4px no-repeat; }
-            </style>
+            <style>
+                font-family: SF Pro KR, SF Pro Display, SF Pro Icons, AOS Icons, Apple Gothic, HY Gulim, MalgunGothic, HY Dotum, Lexi Gulim, Helvetica Neue, Helvetica, Arial, sans-serif;
+                .layerPopup img{
+                margin-bottom : 20px;}
+                .layerPopup:before {display:block; content:""; position:fixed; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,.5); z-index:9000}
+                .layerPopup .layerBox {    z-index:10000;   
+                position:fixed; left:85%; top:48%; transform:translate(-50%, -50%); padding:30px; background:#fff; border-radius:6px; }
+                .layerPopup .layerBox .title {margin-bottom:10px; padding-bottom:10px; font-weight:600; border-bottom:1px solid #d9d9d9;}
+                .layerPopup .layerBox .btnTodayHide {
+                font-size:14px; font-weight:600; color:black; 
+                float: left;text-decoration:none;width: 150px; 
+                height : 30px;line-height:30px;border:black solid 1px; text-align : center;text-decoration:none;
+                }
+                .layerPopup div{
+                    display : inline;
+                }
+                .layerPopup form{
+                    margin-top : 5px;
+                    font-size:16px; font-weight:600;
+                    weight: 100%;
+                    height : 30px;
+                    line-height:30px
+                }
+                .layerPopup #close {
+                font-size:16px; font-weight:600; width: 40px; height : 30px;color:black; float: right; line-height:30px; text-align : center;text-decoration:underline;
+                }
+                .layerPopup a{
+                    text-decoration : none;
+                    color : black;width: 50px;height : 40px;
+                }
+                </style>
 
 
 
@@ -63,17 +82,8 @@
         {% include 'blog/symbol.html' %}
         {% include 'blog/navbar.html' %}
         {% include 'blog/modal.html' %}
-        <div class="pop_wrap" id="mpop">
-			<ul>
-				<li><img src={% static "img\화면 캡처 2022-10-12 191410.png"%} alt=""></li>
-			</ul>
-			<div class="popup_close">
-				<ul>
-					<li class="today"><a href="#">오늘 하루 이창을 열지 않음</a></li>
-					<li class="close"><a href="#">창닫기</a></li>
-				</ul>
-			</div>
-		</div>
+        {% include 'blog/popup.html' %}
+        
 
         <section></section>
         <!-- Hero slider-->
@@ -241,89 +251,28 @@
                 });
                 </script>
 
-                <script type="text/javascript">
-                    var pop_cookie = {
-                        cookie_arr : null,
-                        set : function (name,value,options){
-                            options = options || {};
-                            this.cookie_arr = [escape(name) + '=' + escape(value)];
-                            //-- expires
-                            if (options.expires){
-                                if( typeof options.expires === 'object' && options.expires instanceof Date ){
-                                    var date = options.expires;
-                                    var expires = "expires=" + date.toUTCString();
-                                    this.cookie_arr.push (expires);
+                <script language="JavaScript">
+                    //head 태그 안에 스크립트 선언
+                            function setCookie( name, value, expiredays ) {
+                                var todayDate = new Date();
+                                todayDate.setDate( todayDate.getDate() + expiredays ); 
+                                document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+                            }
+                            function closePop() {
+                                if ( document.pop_form.chkbox.checked ){
+                                    setCookie( "maindiv", "done" , 1 );
                                 }
-                            }else if (options.expires_day){
-                                this.set_expires_date (options.expires_day , 24*60*60);
-                            }else if (options.expires_hour)	{
-                                this.set_expires_date (options.expires_hour , 60*60);
+                                document.all['layer_popup'].style.visibility = "hidden";
                             }
-                            //-- domain
-                            if (options.domain){
-                                var domain = "domain=" + options.domain;
-                                this.cookie_arr.push (domain);
-                            }
-                            //-- path
-                            if (options.path){
-                                var path = 'path=' + options.path;
-                                this.cookie_arr.push (path);
-                            }
-                            //-- secure
-                            if( options.secure === true ){
-                                var secure = 'secure';
-                                this.cookie_arr.push (secure);
-                            }
-                            document.cookie = this.cookie_arr.join('; ');
-                            //console.log (this.cookie_arr.join('; '));
-                        },
-                        get : function (name){
-                            var nameEQ = escape(name) + "=";
-                            var ca = document.cookie.split(';');
-                     
-                            for(var i=0;i < ca.length;i++)
-                            {
-                                var c = ca[i];
-                                while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                                if (c.indexOf(nameEQ) == 0) return unescape(c.substring(nameEQ.length,c.length));
-                            }
-                            return null;
-                        },
-                        del : function (name , options){
-                            options = options || {};
-                            options.expires_day = -1;
-                            this.set ( name , '' , options );
-                        },
-                        set_expires_date : function (expires , time){
-                            var date = new Date();
-                            date.setTime(date.getTime()+(expires*time*1000));
-                            var expires = "expires=" + date.toUTCString();
-                            this.cookie_arr.push (expires);
-                        }
-                    };
-            
-                    if(pop_cookie.get('popview') == 'hidden'){
-                        $('#mpop').hide();
-                    }else{
-                        $('#mpop').show();
-                    }
-                    $("#mpop li.close a").on("click",function(e){
-                        $("#mpop").slideUp();
-                        e.preventDefault();
-                    });
-            
-                    var now = new Date(),
-                         year= now.getFullYear(),
-                         mon = now.getMonth(),
-                         day = now.getDate();
-            
-                    $("#mpop li.today a").on("click",function(e){
-                        //$.cookie('popup', 'hidden', {expires : 1});
-                        pop_cookie.set('popview', 'hidden', { expires : new Date( year, mon, day+1, 0, 0, 0 )} );
-                        $("#mpop").slideUp();
-                        e.preventDefault();
-                    });
                     </script>
-
+                     <script language="Javascript">
+                        cookiedata = document.cookie;   
+                        if ( cookiedata.indexOf("maindiv=done") < 0 ){     
+                            document.all['layer_popup'].style.visibility = "visible";
+                        }
+                        else {
+                            document.all['layer_popup'].style.visibility = "hidden";
+                        }
+                    </script>
         </body>
     </html>
