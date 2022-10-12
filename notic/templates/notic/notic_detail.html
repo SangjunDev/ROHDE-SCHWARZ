@@ -84,20 +84,42 @@
                                                 <div class="card" style="width: 100%;">
                                                     <!--제목,분류,작성일-->
                                                     <div class="card-header">
-                                                        <strong style="font-size: 18px;">{{ notic.title }}</strong>&nbsp;&nbsp;<span style="font-size: 18px; color: gray;">[공지사항]</span>
+                                                        <span style="font-size: 18px; color: gray;">[공지사항]</span>&nbsp;&nbsp;<strong style="font-size: 18px;">{{ notic.title }}</strong>
                                                         <span style="float:right;">{{ notic.registered_date|date:'Y.m.d. H:i' }}</span>
                                                     </div>
                                                     <div class="card-body" style="min-height: 400px; color:black;">
                                                         <!--작성자, 조회수-->
-                                                        <div>
+                                                        <div style="line-height:220%" >
                                                             <span><i class="fas fa-user-edit"></i>&nbsp;작성자 : {{ notic.writer }}</span>
-                                                            <span style="float:right;">조회수 : {{ notic.hits }}</span>
+                                                            <span style="float:right;">조회수 : {{ notic.hits }}</span><br>
+                                                            <span><i class="fa-solid fa-folder-open"></i>&nbsp;첨부 파일  {{ notic_documents.noticdocuments  }}</span>
+                                                            
+                                                            
+                                
                                                         </div>
                                                         <hr>
 
                                                         <!--내용-->
+                                                        {%if notic_images %}
+                                                            {% for ni in notic_images%}
+                                                            
                                                         <div>
+                                                            
+                                                            <div class="col-lg-12 mb-12 mb-lg-0" >
+                                                                <center><img
+                                                                class="img-fluid"
+                                                                src="{{ni.noticimages.url}}"
+                                                                alt=".."></center></div><br>
+                                                           
+
+                                                        </div>
+                                                        {% endfor %}
+                                                                {%endif%}
+                                                        
+                                                        <div>
+                                                        
                                                             {{ notic.content | safe |linebreaksbr}}
+
                                                         </div>
                                                     </div>
                                                 </div>

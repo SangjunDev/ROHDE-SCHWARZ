@@ -1,4 +1,4 @@
-from enum import unique
+import os, uuid
 from django.db import models
 
 class Category(models.Model):
@@ -22,11 +22,8 @@ class newCategory(models.Model):
       return self.name
     
    class Meta:
-      verbose_name_plural = '신제품 카테고리' 
-  
-
-
-
+      verbose_name_plural = '신제품 카테고리'
+      
 class Product(models.Model):
   # 신제품 유무 카테고리
   newCategory = models.ForeignKey(newCategory, null=True, blank=True, on_delete=models.SET_NULL, verbose_name='신제품 유무')
@@ -40,8 +37,11 @@ class Product(models.Model):
   # 상품명
   name = models.TextField(null=False, blank=False, default='',verbose_name='상품명')
   
+  def main_image_upload_path(instance, filename):
+    return f'upload_file/product/main/{instance.name}/{filename}'
+  
   #대표 이미지
-  image = models.ImageField(null=False, blank=False, default='',upload_to = 'upload_file/product/main',verbose_name='메인 이미지')
+  image = models.ImageField(null=False, blank=False, default='',upload_to = main_image_upload_path,verbose_name='메인 이미지')
   
   # 간단한 설명
   about = models.TextField(null=False, blank=False,default='',verbose_name='간단한 설명')
@@ -59,7 +59,7 @@ class Product(models.Model):
     db_table = 'product'
     verbose_name = '제품 등록'
     verbose_name_plural = '제품 등록'
-
+    
 def product_image_upload_path(instance, filename):
     return f'upload_file/product/product/{instance.product.name}/{filename}'
   

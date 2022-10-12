@@ -22,7 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-secret_file = os.path.join(BASE_DIR, 'etc/secret_key.json')  # secrets.json 파일 위치를 명시
+secret_file = os.path.join(BASE_DIR, 'secret_key.json')  # secrets.json 파일 위치를 명시
+
 
 with open(secret_file) as f:
     secrets = json.loads(f.read())
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     'contact',
     'faq',
     'notic',
+    'common',
     
 ]
 
@@ -85,24 +87,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': BASE_DIR / 'db.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'ROHDE&SCHWARZ4',
-        'USER':'postgres',
-        'PASSWORD': '1234qwer',
-        'HOST': 'localhost',
-        'PORT':'5432',
-        
-    }
-}
 
 
 # Password validation

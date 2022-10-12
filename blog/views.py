@@ -6,3 +6,9 @@ def index(request):
     'blog/index.html',
   )
   
+def promotion(request):
+    return render(
+      request,
+      'blog/popup.html',
+    )
+  

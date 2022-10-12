@@ -64,14 +64,14 @@
             <div class="container py-5">
                 <div class="row">
                     <!-- Shop sidebar-->
-                    <div class="col-xl-2 col-lg-3 order-2 order-lg-1">
+                    <div class="col-xl-2 col-lg-3 order-2 order-lg-1" style="line-height:220%">
                         <h5 class="mb-4">Shop by Category</h5>
                         
                         <ul class="list-unstyled text-muted mb-5">
                             {% for cat in category_list%}
                             <li class="mb-2.3 d-flex align-items-center justify-content-between">
                                 <a class="reset-anchor" href="{{cat.get_absolute_url}}">{{cat.description}}</a>
-                                <span class="badge bg-light text-dark"></span></li>
+                                <span class="badge bg-light text-dark"></span></li><br>
                                 {% endfor %}
                         </ul>
                         
@@ -100,7 +100,7 @@
                                 <div class="col-xl-6 product mb-4">
                                     <span class="badge rounded-0 bg-primary" style=" position: absolute; top: -25px;
                                     left: 0px;">신제품</span>
-                                    <a href="{{p.newUrl}}">
+                                    <a href="{{p.newUrl}}"  target='_blank'>
                                         
                                         <img
                                             class="img-fluid"
@@ -117,7 +117,7 @@
                                     
                                     <h6 class="text-left">
                                         
-                                        <a class="reset-anchor" href="{{p.newUrl}}">{{p.name}}</a>
+                                        <a class="reset-anchor" href="{{p.newUrl}}"  target='_blank'>{{p.name}}</a>
                                         
                                     </h6>
                                     <p class="text-left text-muted font-weight-bold mb-4" style="font-size:13px">

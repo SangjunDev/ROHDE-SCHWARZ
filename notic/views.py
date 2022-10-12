@@ -5,6 +5,10 @@ from django.contrib import messages
 from django.views.generic import ListView
 from django.db.models import Q
 from datetime import date, datetime, timedelta
+from django.http import HttpResponse
+
+
+
 
 class NoticListView(ListView):
     model = Notic
@@ -63,8 +67,12 @@ class NoticListView(ListView):
 #공지사항 조회수 기능(쿠키이용)
 def notic_detail_view(request, pk):
   notic = get_object_or_404(Notic, pk = pk)
+  notic_documents = Document.objects.filter(notic=notic)
+  notic_images = NoticImage.objects.filter(notic=notic)
   context = { 
              'notic':notic,
+             'notic_documents':notic_documents,
+             'notic_images': notic_images,
              }
   response = render(request, 'notic/notic_detail.html', context)
   
@@ -84,6 +92,20 @@ def notic_detail_view(request, pk):
     notic.save()
     
   return response
+
+
+def file_download(request):
+    path = request.GET['path']
+    file_path = os.path.join(settings.MEDIA_ROOT, path)
+ 
+    if os.path.exists(file_path):
+        filename = Document.file.name.split('/')[-1]
+        response = HttpResponse(Document.file, content_type='text/plain')
+        response['Content-Disposition'] = 'attachment; filename=%s' % filename
+        return response
+    else:
+        message = '알 수 없는 오류가 발행하였습니다.'
+        return HttpResponse("<script>alert('"+ message +"');history.back()'</script>")
 
 
 
