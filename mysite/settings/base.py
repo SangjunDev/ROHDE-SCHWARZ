@@ -23,7 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 secret_file = os.path.join(BASE_DIR, 'secret_key.json')  # secrets.json 파일 위치를 명시
+<<<<<<< HEAD
 
+=======
+>>>>>>> 380e93a896a5139b27af7a5f015263fd8f16e6fc
 
 with open(secret_file) as f:
     secrets = json.loads(f.read())
@@ -40,6 +43,8 @@ def get_secret(setting):
 SECRET_KEY = get_secret("SECRET_KEY")    
 
 # Application definition
+
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -89,6 +94,27 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
+<<<<<<< HEAD
+=======
+# Database
+# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':'ROHDE&SCHWARZ3',
+        'USER':'sangjunkim',
+        'PASSWORD': '1234qwer',
+        'HOST': 'localhost',
+        'PORT':'5432',
+        
+    }
+}
+
+
+>>>>>>> 380e93a896a5139b27af7a5f015263fd8f16e6fc
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
