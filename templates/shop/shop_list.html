@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{%load static %}
+
+{% block content %}
+<section
+        <div class="bg-light py-2">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 bg-light">
+                        <li class="breadcrumb-item">
+                            <a class="reset-anchor" href="index.html">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Shop / {{category.name}}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>    
+        </section>
+        <section class="pb-5">
+            <div class="container py-5">
+                <div class="row">
+                    <!-- Shop sidebar-->
+                    <div class="col-xl-2 col-lg-3 order-2 order-lg-1" style="line-height:220%">
+                        <h5 class="mb-4">Shop by Category</h5>
+                        
+                        <ul class="list-unstyled text-muted mb-5">
+                            {% for cat in category_list%}
+                            <li class="mb-2.3 d-flex align-items-center justify-content-between">
+                                <a class="reset-anchor" href="{{cat.get_absolute_url}}">{{cat.description}}</a>
+                                <span class="badge bg-light text-dark"></span></li><br>
+                                {% endfor %}
+                        </ul>
+                        
+                    </div>
+                    <!-- Shop listing-->
+                    <div class="col-xl-9.7 col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
+                        <!-- Listing filter-->
+                        <div class="row mb-4 pb-3 align-items-center">
+                            <div class="col-md-6 text-center text-md-start">
+                                <p class="small text-muted">Showing
+                                    <strong class="text-dark">{{product_list.number}}
+                                    </strong>of
+                                    <strong class="text-dark">{{product_list.paginator.num_pages}}
+                                    </strong>pages</p>
+                            </div>
+                        </div>
+
+                        <div class="row"> 
+                            <!-- Product-->
+                            
+                            {%if product_list%}
+                            {% for p in product_list %}
+                                {%if p.newCategory != None %}
+                            <div class="col-xl-6 col-lg-4 col-6">
+                                <div class="row"> 
+                                <div class="col-xl-6 product mb-4">
+                                    <span class="badge rounded-0 bg-primary" style=" position: absolute; top: -25px;
+                                    left: 0px;">신제품</span>
+                                    <a href="{{p.newUrl}}"  target='_blank'>
+                                        
+                                        <img
+                                            class="img-fluid"
+                                            
+                                            src="{{p.image.url}}"
+                                            
+                                            alt="error">
+    
+                                        </a>
+                                        <div class="cta shadow d-inline-block"></div>
+                                        
+                                </div>
+                                <div class="col-xl-6 product mb-4">
+                                    
+                                    <h6 class="text-left">
+                                        
+                                        <a class="reset-anchor" href="{{p.newUrl}}"  target='_blank'>{{p.name}}</a>
+                                        
+                                    </h6>
+                                    <p class="text-left text-muted font-weight-bold mb-4" style="font-size:13px">
+                                        {{p.about|linebreaksbr}}</p>
+                                </div>
+                                </div>
+                            </div>
+                            {%else%}
+                            <div class="col-xl-6 col-lg-4 col-6">
+                                
+                                <div class="row"> 
+                                    
+                                <div class="col-xl-6 product mb-4">
+                                    <span class="badge rounded-0 bg-primary" style=" position: absolute; top: -30px;
+                                    left: 0px;"></span>
+                                    <a href="{{p.get_absolute_url}}">
+                                        
+                                        <img
+                                            class="img-fluid"
+                                            
+                                            src="{{p.image.url}}"
+                                            
+                                            alt="error">
+    
+                                        </a>
+                                        <div class="cta shadow d-inline-block"></div>
+                                        
+                                </div>
+                                <div class="col-xl-6 product mb-4">
+                                    
+                                    <h6 class="text-left">
+                                        
+                                        <a class="reset-anchor" href="{{p.get_absolute_url}}">{{p.name}}</a>
+                                        
+                                    </h6>
+                                    <p class="text-left text-muted font-weight-bold mb-4" style="font-size:13px">
+                                        {{p.about|linebreaksbr}}</p>
+                                </div>
+                                </div>
+                                
+                            </div>
+
+                            {%endif%}
+                            {% endfor %}
+                                    {%endif%}
+
+                            <!-- Pagination-->
+                            <nav class="pt-5" aria-label="Page navigation">                                                
+                                {% if product_list %}
+                                  <ul class="pagination justify-content-center justify-content-lg-end mb-0">
+                                      {% if product_list.has_previous %}
+                                      <li class="page-item mx-1">
+                                          <a class="page-link py-1" href="?page={{ product_list.previous_page_number }}" aria-label="Previous">
+                                              <span aria-hidden="true">«</span></a>
+                                      </li>
+                                      {% else %}
+                                       
+                                      <li class="page-item mx-1">
+                                          <a class="page-link py-1" href="#" aria-label="Previous">
+                                              <span aria-hidden="true">«</span></a>
+                                      </li>
+                                       
+                                      {% endif %}
+
+
+                                      {% for page in product_list.paginator.page_range %}
+                                      {% if page == product_list.number  %}
+                                      <li class="page-item mx-1 active">
+                                          <a class="page-link py-1" href="?page={{ page }}">{{page}}</a>
+                                      </li>
+                                      {% else %}
+                                      <li class="page-item mx-1 ">
+                                          <a class="page-link py-1" href="?page={{ page }}">{{page}}</a>
+                                      </li>
+
+                                      {% endif %}
+                                      {% endfor %}
+
+                                      
+                                      {% if product_list.has_next %}
+                                      <li class="page-item mx-1">
+                                          <a class="page-link py-1" href="?page={{ product_list.next_page_number }}" aria-label="Next">
+                                              <span aria-hidden="true">»</span></a>
+                                      </li>
+                                      {% else %}
+                                      <li class="page-item mx-1">
+                                          <a class="page-link py-1" href="#" aria-label="Next">
+                                              <span aria-hidden="ture">»</span></a>
+                                      </li>
+
+                                      {% endif %}
+                                      
+                              </ul>
+                              {% endif %}
+                                                                             
+                          </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <form id="searchForm" method="get" action="/">
+            <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+            <input type="hidden" id="page" name="page" value="{{ page }}">
+        </form>
+{% endblock %} 

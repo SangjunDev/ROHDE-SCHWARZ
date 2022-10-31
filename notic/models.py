@@ -2,6 +2,7 @@ from email.policy import default
 from django.db import models
 import os
 from django.conf import settings
+from uuid import uuid4
 
 
 # Create your models here.
@@ -36,6 +37,8 @@ class Document(models.Model):
   
     #첨부 파일
   noticdocuments = models.FileField(upload_to=document_file_upload_path, blank=True,null=False, default='',verbose_name='첨부파일')
+  filename = models.CharField(max_length=64, null=True, verbose_name='첨부파일명')
+
   
   
 class NoticImage(models.Model):

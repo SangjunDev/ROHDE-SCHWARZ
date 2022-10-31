@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{%load static %}
+{% block content %}
+<!-- Breadcrumb-->
+<div class="bg-light py-2">
+  <div class="container">
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0 bg-light">
+              <li class="breadcrumb-item">
+                  <a class="reset-anchor" href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">Contact</li>
+          </ol>
+      </nav>
+  </div>
+</div>
+
+<section class="pb-5">
+  <div class="container p-5 ">
+    <div class="row align-items-center">
+      <form  id="inputbox" method="POST" action="" >
+          {% csrf_token %}
+          <div class="row">
+              <div class="form-group col-12 mb-3">
+                <label class="form-label small text-uppercase" for="company_input">회사명</label>
+                <input class="form-control" type="text" name="company" placeholder="Enter your company">
+              </div>
+              <div class="form-group col-12 mb-3">
+                <label class="form-label small text-uppercase" for="position_input">부서/직책</label>
+                <input class="form-control" type="text" name="position" placeholder="Enter your position">
+              </div>
+              <div class="form-group col-12 mb-3">
+                <label class="form-label small text-uppercase" for="name_input">이름</label>
+                <input class="form-control" type="text" name="name" placeholder="Enter your name">
+              </div>
+              <div class="form-group col-12 mb-3">
+                <label class="form-label small text-uppercase" for="phone_input">전화번호</label>
+                <input class="form-control" type="text" name="phone" placeholder="Enter your phone number">
+              </div>
+              <div class="form-group col-12 mb-3">
+                <label class="form-label small text-uppercase" for="email_input">이메일</label>
+                <input class="form-control" type="email" name="email" placeholder="Enter your email address">
+              </div>
+              <div class="form-group col-12 mb-3">
+                  <label class="form-label small text-uppercase" for="message_input">문의 내용</label>
+                  <!--<input class="form-control" type="text" name="city" placeholder="Enter your city">-->
+                  <textarea rows="5" class="form-control" id="message_input" type="text" name="message" placeholder="Enter your Inquiry"></textarea>
+                </div>
+            </div><br>
+
+              <div class="row align-items-center">
+                <div class="col-md-12" >
+                  <ul class="list-inline mb-0" style="float:right;">
+                      <li class="list-inline-item py-1"><input class="btn btn-outline-primary btn-sm" type="button"  value="Back Home" onClick="location.href='/'" ></li>
+                      <li class="list-inline-item py-1"><input class="btn btn-outline-primary btn-sm" type="submit"  value="Send Messange"  ></li>
+                    </ul>
+                </div>
+                
+              </div>
+            
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %} 

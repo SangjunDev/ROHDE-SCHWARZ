@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{%load static %}
+{% block content %}
+    <!-- Breadcrumb-->
+    <div class="bg-light py-2">
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0 bg-light">
+            <li class="breadcrumb-item"><a class="reset-anchor" href="index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cantact / Completed</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <section class="py-5">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <!-- Navigation-->
+            <header class="text-center mb-5">
+              <h2>Completed</h2>
+            </header>
+            <ul class="nav nav-tabs nav-fill border-bottom mb-5 flex-column flex-md-row">
+              <li class="nav-item"><a class="nav-link disabled" href="#">1. Contact</a></li>
+              <li class="nav-item"><a class="nav-link disabled" href="#">2. Send an E-mail</a></li>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">3. Completed</a></li>
+            </ul>
+            <div class="text-center">
+              <svg class="svg-icon text-primary svg-icon-xl svg-icon-light mb-4">
+                <use xlink:href="#envelope-1"> </use>
+              </svg>
+              <h2>정상적으로 문의가 완료되었습니다.</h2><br>
+              <div class="row">
+                <div class="col-lg-7 mx-auto">
+                  <p class="text-muted mb-4">빠른 시일내에 답변 드리도록 하겠습니다.<br>감사합니다.</p>
+                </div>
+              <!--</div><a class="btn btn-primary" href="index.html"> <i class="fas fa-shopping-bag me-2"></i>Continue shopping</a>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endblock %} 

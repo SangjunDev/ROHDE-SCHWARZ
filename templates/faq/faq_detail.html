@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{%load static %}
+
+{% block content %}
+
+<!-- Breadcrumb-->
+<div class="bg-light py-2">
+  <div class="container">
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0 bg-light">
+              <li class="breadcrumb-item">
+                  <a class="reset-anchor" href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">Support / FAQ</li>
+          </ol>
+      </nav>
+  </div>
+</div>
+
+<section class="pb-5">
+  <div class="container">
+      <div class="row">
+          <!-- Item information-->
+          <div class="col-xl-10 mx-auto">
+  
+              <div class="tab-content" id="myTabContent">
+                  <div
+                      class="tab-pane fade show active"
+                      id="description"
+                      role="tabpanel"
+                      aria-labelledby="description-tab">
+                      <div class="container">
+                          <div class="row-mt-5">
+                              <div class="col-12">
+                                  <!--본문-->
+                                  <div class="card" style="width: 100%;">
+                                      <!--제목,분류,작성일-->
+                                      <div class="card-header">
+                                          <strong style="font-size: 18px;">{{ faq.title }}</strong>&nbsp;&nbsp;<span style="font-size: 18px; color: gray;">[공지사항]</span>
+                                          <span style="float:right;">{{ faq.registered_date|date:'Y.m.d. H:i' }}</span>
+                                      </div>
+                                      <div class="card-body" style="min-height: 400px; color:black;">
+                                          <!--작성자, 조회수-->
+                                          <div>
+                                              <span><i class="fas fa-user-edit"></i>&nbsp;작성자 : {{ faq.writer }}</span>
+                                              <span style="float:right;">조회수 : {{ faq.hits }}</span>
+                                          </div>
+                                          <hr>
+
+                                          <!--내용-->
+                                          <div>
+                                              {{ faq.content | safe |linebreaksbr}}
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <br>
+                                  <div class="text-right" style="margin-top:-15px; float:right;">
+                                      <button class="btn btn-outline-primary btn-sm" id="detail_btn" onclick="location.href='/support/faq'">목록으로</button>
+                                  </div>
+                              </div>
+                          </div>
+                   </div>
+                  </div>
+                </div>
+          </section>
+{% endblock %} 
+    

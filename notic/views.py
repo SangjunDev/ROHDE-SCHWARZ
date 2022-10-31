@@ -6,6 +6,9 @@ from django.views.generic import ListView
 from django.db.models import Q
 from datetime import date, datetime, timedelta
 from django.http import HttpResponse
+from django.views.generic.detail import SingleObjectMixin
+from django.http import FileResponse
+from django.core.files.storage import FileSystemStorage
 
 
 
@@ -94,18 +97,6 @@ def notic_detail_view(request, pk):
   return response
 
 
-def file_download(request):
-    path = request.GET['path']
-    file_path = os.path.join(settings.MEDIA_ROOT, path)
- 
-    if os.path.exists(file_path):
-        filename = Document.file.name.split('/')[-1]
-        response = HttpResponse(Document.file, content_type='text/plain')
-        response['Content-Disposition'] = 'attachment; filename=%s' % filename
-        return response
-    else:
-        message = '알 수 없는 오류가 발행하였습니다.'
-        return HttpResponse("<script>alert('"+ message +"');history.back()'</script>")
 
 
 

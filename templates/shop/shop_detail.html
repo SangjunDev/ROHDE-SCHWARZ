@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+{%load static %}
+
+{% block content %}
+
+<div class="bg-light py-2">
+  <div class="container">
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0 bg-light">
+              <li class="breadcrumb-item">
+                  <a class="reset-anchor" href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">Shop / {{product_list.category}} / {{product_list.name}} 
+              </li>
+
+          </ol>
+      </nav>
+  </div>
+</div>
+
+<section class="py-5">
+  <div class="container py-5">
+    <div class="row">
+
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="row">
+
+          <div class="col-md-2 order-2 order-md-1">
+            <!-- Slider thumbnails-->
+            <div class="swiper-container swiper-thumbnails swiper-container-initialized swiper-container-vertical swiper-container-pointer-events swiper-container-thumbs" id="detailSliderThumb">   
+              <div class="swiper-wrapper" id="swiper-wrapper-9327517b0ff10d9b2" aria-live="polite" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                  {%if product_images%}
+                  {% for p in product_images%}
+                  <div class="swiper-slide swiper-slide-visible" role="group" aria-label="{{p.pk}} / 3" style="height: 61.25px; margin-bottom: 40px;">
+                  <img class="img-fluid" src="{{p.productimages.url}}" alt="..">
+              </div>
+              {%endfor%}
+              {%endif%}  
+              </div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+          </div>
+
+          
+          <div class="col-md-10 order-1 order-md-2 mb-4 mb-lg-0">
+              
+            <!-- Item slider-->
+            
+            <div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events" id="detailSlider">   
+              
+              <div class="swiper-wrapper" id="swiper-wrapper-55cf1c7481149d69" aria-live="polite" aria-label="{{p.pk}} / 3" style="transform: translate3d(-451px, 0px, 0px); transition-duration: 0ms;">
+                  {%if product_images%}
+                  {% for p in product_images%}
+                  <div class="swiper-slide" role="group" style=";width:441px; margin-right: 10px;">
+                  <a class="glightbox" href="{{p.productimages.url}}">
+                      <img class="img-fluid" src="{{p.productimages.url}}" alt="..">
+                  </a>
+              </div>
+              {%endfor%}
+              {%endif%}  
+          </div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+          </div>
+          
+          </div>
+        </div>
+      </div>
+
+      <!-- Item info-->
+      <div class="col-lg-6">
+          <div class="badge bg-info small rounded-0 mb-2"></div>
+        <h3>{{product_list.name}}</h3>
+        <div class="d-flex align-items-center">
+        </div><br>
+        <div class="d-flex flex-wrap align-items-center mb-4">
+          
+          <p class="mb-0 me-3" style="line-height: 1.8;">{{product_list.detailabout|linebreaksbr}}</p>
+        </div>
+        <div class="d-flex align-items-center mb-4">
+          
+          
+          <p class="text-small mb-4">
+          </p>
+      </div>
+
+    </div>
+  </div>
+</section><br>
+
+
+
+
+
+
+
+<section class="pb-5">
+  <div class="container">
+      <div class="row">
+          <!-- Item information-->
+          <div class="col-xl-10 mx-auto">
+              <ul
+                  class="nav nav-tabs tabs-fill justify-content-center border-0 flex-column flex-md-row"
+                  id="myTab"
+                  role="tablist">
+                  <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation">
+                      <a
+                          class="nav-link text-small fw-bold py-3 border-0 active"
+                          id="description-tab"
+                          data-bs-toggle="tab"
+                          href="#Information"
+                          role="tab"
+                          aria-controls="description"
+                          aria-selected="true">Information</a>
+                  </li>
+                  <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation">
+                      <a
+                          class="nav-link text-small fw-bold py-3 border-0"
+                          id="info-tab"
+                          data-bs-toggle="tab"
+                          href="#Specification"
+                          role="tab"
+                          aria-controls="info"
+                          aria-selected="false">Specification</a>
+                  </li>
+                  <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation">
+                      <a
+                          class="nav-link text-small fw-bold py-3 border-0"
+                          id="reviews-tab"
+                          data-bs-toggle="tab"
+                          href="#Option"
+                          role="tab"
+                          aria-controls="reviews"
+                          aria-selected="false">
+                          Option</a>
+                  </li>
+                  <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation">
+                      <a
+                          class="nav-link text-small fw-bold py-3 border-0"
+                          id="shipping-tab"
+                          data-bs-toggle="tab"
+                          href="#Etc"
+                          role="tab"
+                          aria-controls="shipping"
+                          aria-selected="false">Data Sheet &amp; Etc</a>
+                  </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                  <div
+                      class="tab-pane fade show active"
+                      id="Information"
+                      role="tabpanel"
+                      aria-labelledby="description-tab">
+                      <div class="p-3 p-md-5">
+                          <p class="small text-muted mb-1">{{product_list.name}}</p>
+                          <h5 class="mb-4">제품 설명</h5>
+                          <div class="row align-items-center mb-4">
+                              {%if info_images%}
+                              {%for info in info_images%}
+                              <div class="col-lg-12 mb-12 mb-lg-0"><center><img
+                                  class="img-fluid"
+                                  src="{{info.informationimages.url}}"
+                                  alt=".."></center></div>
+                              {% endfor %}
+                              {% endif %}
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="Specification" role="tabpanel" aria-labelledby="info-tab">
+                      <div class="p-3 p-md-5">
+                          <p class="small text-muted mb-1">{{product_list.name}}</p>
+                          <h5 class="mb-4">제품 사양</h5>
+                          
+                          <div class="row align-items-center mb-4">
+                              {% if spec_images%}
+                              {% for spec in spec_images%}
+                              <div class="col-lg-12 mb-12 mb-lg-0"><center><img
+                                  class="img-fluid"
+                                  src="{{spec.specificationimages.url}}"
+                                  alt=".."></center></div>
+                            {% endfor %}      
+                            {% endif %}
+                          </div>
+                          
+                      </div>
+                  </div>
+
+                  <div
+                      class="tab-pane fade"
+                      id="Option"
+                      role="tabpanel"
+                      aria-labelledby="reviews-tab">
+                      <div class="p-3 p-md-5">
+                          <p class="small text-muted mb-1">{{product_list.name}}</p>
+                          <h5 class="mb-4">제품 옵션</h5>
+                          <div class="row align-items-center mb-4">
+                              {% if option_images%}
+                              {% for opt in option_images%}
+                              <div class="col-lg-12 mb-12 mb-lg-0"><center><img
+                                  class="img-fluid"
+                                  src="{{opt.optionimages.url}}"
+                                  alt=".."></center></div>
+                                  {% endfor %} 
+                                  {% endif %}
+                          </div>
+                      </div>
+                  </div>
+                  <div
+                      class="tab-pane fade"
+                      id="Etc"
+                      role="tabpanel"
+                      aria-labelledby="shipping-tab">
+                      <div class="p-3 p-md-5">
+                          <p class="small text-muted mb-1">{{product_list.name}}</p>
+                          <h5 class="mb-4">데이터 시트 및 기타 자료</h5>
+                          <p> 윤동권 부장(010-5546-1974, yoondk@cndi.co.kr) 혹은 <br>
+                              양두길 부장(010-3753-6221, jeff@cndi.co.kr)
+                              로 요청해 주시면 신속하게 보내드리겠습니다.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+</section>
+
+{% endblock %} 
